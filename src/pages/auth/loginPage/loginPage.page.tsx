@@ -19,7 +19,7 @@ import { Formik, Form, Field } from 'formik';
 import { SignInSchema } from '@utils/ValidationSchema';
 import TextError from '@components/Forms/TextError';
 import { LoginValuesType } from 'types';
-import Logo from '@assets/logo.svg';
+import DrOffersLogo from '@assets/dr-offer-logo.png';
 import './login.css';
 import { setCurrentUser } from '@redux/slices/userSlice/userSlice';
 import Swal from 'sweetalert2';
@@ -49,7 +49,7 @@ const Login = () => {
         icon: 'error',
         title: 'Login Failed',
         text: 'Invalid email or password. Please try again.',
-        confirmButtonColor: '#3085d6',
+        confirmButtonColor: '#B44C43',
       });
       console.log(err);
     }
@@ -61,94 +61,193 @@ const Login = () => {
   };
 
   return (
-    <div className="min-w-[70%]">
-      <div className="bg-[#f8f9fa]  min-vh-100 d-flex flex-row align-items-center justify-content-center py-5">
-        <CCol md={8}>
-          <CCardGroup className="overflow-hidden card-shadow">
-            <CCard className="p-5 ">
-              <CCardBody>
-                <Formik
-                  validationSchema={SignInSchema}
-                  initialValues={initialValues}
-                  onSubmit={Login}
-                  validateOnChange={false}
-                  validateOnBlur={true}
-                >
-                  {({ errors, touched }) => (
-                    <Form>
-                      <div className="text-center mb-4">
-                        <h1 className="text-2xl font-bold text-[#2d3748] mb-2 hover:text-[#1a202c] transition-colors duration-300">
-                          Welcome Back!
-                        </h1>
-                        <p className="text-[#4a5568] text-md hover:text-[#2d3748] transition-colors duration-300">
-                          Sign in to access your admin panel
-                        </p>
-                      </div>
-                      <CInputGroup className="mb-3 hover:opacity-90 transition-opacity duration-300">
-                        <CInputGroupText>
-                          <CIcon icon={cilUser} />
-                        </CInputGroupText>
-                        <Field
-                          name="email"
-                          as={CFormInput}
-                          placeholder="Enter your email"
-                          autoComplete="email"
-                          type="text"
-                        />
-                      </CInputGroup>
-                      {errors.email && touched.email ? (
-                        <TextError name="email" />
-                      ) : null}
-                      <CInputGroup className="mb-3 hover:opacity-90 transition-opacity duration-300">
-                        <CInputGroupText>
-                          <CIcon icon={cilLockLocked} />
-                        </CInputGroupText>
-                        <Field
-                          name="password"
-                          as={CFormInput}
-                          type="password"
-                          placeholder="Enter your password"
-                          autoComplete="current-password"
-                        />
-                      </CInputGroup>
-                      {errors.password && touched.password ? (
-                        <TextError name="password" />
-                      ) : null}
-                      <CRow className="align-items-center">
-                        <CCol xs={6}>
-                          <CButton
-                            className="primary-btn w-100 hover:shadow-lg transition-all duration-300"
-                            type="submit"
-                            disabled={isLoading}
+    <div className="min-vh-100 d-flex align-items-center justify-content-center" style={{ background: 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)' }}>
+      <div className="container">
+        <CRow className="justify-content-center">
+          <CCol lg={10} xl={8}>
+            <CCardGroup className="shadow-lg rounded-lg overflow-hidden">
+              {/* Login Form Card */}
+              <CCard className="p-4 border-0">
+                <CCardBody className="px-5 py-4">
+                  <Formik
+                    validationSchema={SignInSchema}
+                    initialValues={initialValues}
+                    onSubmit={Login}
+                    validateOnChange={false}
+                    validateOnBlur={true}
+                  >
+                    {({ errors, touched }) => (
+                      <Form>
+                        <div className="mb-4">
+                          <p className="text-muted mb-2" style={{ fontSize: '14px', fontWeight: '500' }}>
+                            Welcome back !!!
+                          </p>
+                          <h1 
+                            className="mb-4" 
+                            style={{ 
+                              fontSize: '32px', 
+                              fontWeight: 'bold', 
+                              color: '#2d3748',
+                              marginBottom: '2rem'
+                            }}
                           >
-                            {isLoading ? 'Signing in...' : 'Sign In'}
-                          </CButton>
-                        </CCol>
-                        <CCol xs={6} className="text-end">
-                          <CButton className="forgot__password  transition-all duration-300 scale-105">
-                            Forgot password?
-                          </CButton>
-                        </CCol>
-                      </CRow>
-                    </Form>
-                  )}
-                </Formik>
-              </CCardBody>
-            </CCard>
-            <CCard className="text-white bg__primary py-5 hover:shadow-xl transition-shadow duration-300">
-              <CCardBody className="text-center d-flex flex-column justify-content-center align-items-center">
-                <h2 className="mb-4 font-bold text-2xl text-center text-white transition-transform duration-300 transform hover:scale-110 hover:rotate-1 ">
-                  PropCut Admin Panel
-                </h2>
-                <img
-                  src={Logo}
-                  alt="Logo"
-                  className="w-32 h-32 object-contain hover:scale-110 transition-transform duration-400"
-                />
-              </CCardBody>
-            </CCard>
-          </CCardGroup>
-        </CCol>
+                            Sign in
+                          </h1>
+                        </div>
+
+                        <div className="mb-3">
+                          <label className="form-label text-muted mb-2" style={{ fontSize: '14px', fontWeight: '500' }}>
+                            Email
+                          </label>
+                          <Field
+                            name="email"
+                            as={CFormInput}
+                            placeholder="test@gmail.com"
+                            autoComplete="email"
+                            type="email"
+                            className="form-control-lg border-0 shadow-sm"
+                            style={{
+                              backgroundColor: '#f8f9fa',
+                              borderRadius: '8px',
+                              padding: '12px 16px',
+                              fontSize: '16px'
+                            }}
+                          />
+                          {errors.email && touched.email && <TextError name="email" />}
+                        </div>
+
+                        <div className="mb-3">
+                          <div className="d-flex justify-content-between align-items-center mb-2">
+                            <label className="form-label text-muted mb-0" style={{ fontSize: '14px', fontWeight: '500' }}>
+                              Password
+                            </label>
+                            <a 
+                              href="#" 
+                              className="text-decoration-none"
+                              style={{ 
+                                color: '#B44C43', 
+                                fontSize: '14px',
+                                fontWeight: '500'
+                              }}
+                            >
+                              Forgot Password ?
+                            </a>
+                          </div>
+                          <Field
+                            name="password"
+                            as={CFormInput}
+                            type="password"
+                            placeholder="••••••••••"
+                            autoComplete="current-password"
+                            className="form-control-lg border-0 shadow-sm"
+                            style={{
+                              backgroundColor: '#f8f9fa',
+                              borderRadius: '8px',
+                              padding: '12px 16px',
+                              fontSize: '16px'
+                            }}
+                          />
+                          {errors.password && touched.password && <TextError name="password" />}
+                        </div>
+
+                        <CButton
+                          type="submit"
+                          disabled={isLoading}
+                          className="w-100 border-0 text-white fw-bold py-3 mb-4"
+                          style={{
+                            backgroundColor: '#B44C43',
+                            borderRadius: '8px',
+                            fontSize: '16px',
+                            textTransform: 'uppercase',
+                            letterSpacing: '1px',
+                            boxShadow: '0 4px 15px rgba(180, 76, 67, 0.3)',
+                            transition: 'all 0.3s ease'
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.backgroundColor = '#9d3e36';
+                            e.currentTarget.style.transform = 'translateY(-2px)';
+                            e.currentTarget.style.boxShadow = '0 6px 20px rgba(180, 76, 67, 0.4)';
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.backgroundColor = '#B44C43';
+                            e.currentTarget.style.transform = 'translateY(0)';
+                            e.currentTarget.style.boxShadow = '0 4px 15px rgba(180, 76, 67, 0.3)';
+                          }}
+                        >
+                          {isLoading ? 'Signing in...' : 'SIGN IN'}
+                        </CButton>
+
+                        <div className="text-center">
+                          <span className="text-muted" style={{ fontSize: '14px' }}>
+                            I don't have an account ? 
+                          </span>
+                          <a 
+                            href="#" 
+                            className="text-decoration-none ms-1"
+                            style={{ 
+                              color: '#B44C43', 
+                              fontSize: '14px',
+                              fontWeight: '600'
+                            }}
+                          >
+                            Sign up
+                          </a>
+                        </div>
+                      </Form>
+                    )}
+                  </Formik>
+                </CCardBody>
+              </CCard>
+
+              {/* Logo/Branding Card */}
+              <CCard 
+                className="text-white py-5 border-0 d-flex align-items-center justify-content-center"
+                style={{ 
+                  background: 'linear-gradient(135deg, #B44C43 0%, #8B3A33 100%)',
+                  minHeight: '500px'
+                }}
+              >
+                <CCardBody className="text-center d-flex flex-column justify-content-center align-items-center h-100">
+                  <div className="mb-4 dr-offers-logo">
+                    <img
+                      src={DrOffersLogo}
+                      alt="Dr.Offers Logo"
+                      className="img-fluid"
+                      style={{
+                        maxWidth: '320px',
+                        width: '100%',
+                        height: 'auto',
+                        filter: 'brightness(1.1) contrast(1.1)',
+                        transition: 'all 0.3s ease'
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.transform = 'scale(1.05)';
+                        e.currentTarget.style.filter = 'brightness(1.2) contrast(1.2)';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.transform = 'scale(1)';
+                        e.currentTarget.style.filter = 'brightness(1.1) contrast(1.1)';
+                      }}
+                    />
+                  </div>
+                  <div 
+                    className="text-center mt-3"
+                    style={{
+                      fontSize: '20px',
+                      fontWeight: '600',
+                      color: 'rgba(255, 255, 255, 0.85)',
+                      direction: 'rtl',
+                      fontFamily: 'Arial, Tahoma, sans-serif',
+                      letterSpacing: '1px',
+                      textShadow: '1px 1px 3px rgba(0,0,0,0.3)'
+                    }}
+                  >
+                  </div>
+                </CCardBody>
+              </CCard>
+            </CCardGroup>
+          </CCol>
+        </CRow>
       </div>
     </div>
   );

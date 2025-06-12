@@ -1,8 +1,14 @@
 :root {
-    /* Light mode variables */
-    --text-primary: #4A5568;
-    --text-hover: #2D3748;
-    --bg-primary: #FFFFFF;
+    /* Dr.Offers Brand Colors */
+    --brand-primary: #B44C43;
+    --brand-primary-hover: #9d3e36;
+    --brand-primary-light: rgba(180, 76, 67, 0.1);
+    --text-primary: #2d3748;
+    --text-secondary: #4a5568;
+    --text-muted: #718096;
+    --bg-light: #f8f9fa;
+    --border-light: #e2e8f0;
+    --shadow-light: rgba(0, 0, 0, 0.1);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -116,4 +122,115 @@
 .about-container {
     background-color: var(--bg-primary) !important;
     transition: background-color 0.3s ease !important;
+}
+
+/* Custom form styles for Dr.Offers login */
+.form-control-lg.shadow-sm {
+    transition: all 0.3s ease !important;
+    border: 1px solid transparent !important;
+}
+
+.form-control-lg.shadow-sm:focus {
+    background-color: #ffffff !important;
+    border-color: var(--brand-primary) !important;
+    box-shadow: 0 0 0 0.2rem rgba(180, 76, 67, 0.1) !important;
+    outline: none !important;
+}
+
+.form-control-lg.shadow-sm:hover {
+    background-color: #ffffff !important;
+    border-color: var(--border-light) !important;
+}
+
+/* Custom button hover effects */
+.dr-offers-btn {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.dr-offers-btn:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 20px rgba(180, 76, 67, 0.4) !important;
+}
+
+.dr-offers-btn:active {
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 15px rgba(180, 76, 67, 0.3) !important;
+}
+
+/* Card styling */
+.login-card-shadow {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
+    border-radius: 16px !important;
+}
+
+/* Logo animation */
+.dr-offers-logo {
+    animation: gentle-float 6s ease-in-out infinite !important;
+}
+
+@keyframes gentle-float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Form labels */
+.form-label-custom {
+    color: var(--text-muted) !important;
+    font-weight: 500 !important;
+    font-size: 14px !important;
+    margin-bottom: 8px !important;
+}
+
+/* Link styles */
+.dr-offers-link {
+    color: var(--brand-primary) !important;
+    text-decoration: none !important;
+    transition: all 0.3s ease !important;
+}
+
+.dr-offers-link:hover {
+    color: var(--brand-primary-hover) !important;
+    text-decoration: underline !important;
+}
+
+/* Background gradient */
+.login-background {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%) !important;
+    min-height: 100vh !important;
+}
+
+/* Brand card gradient */
+.brand-card-gradient {
+    background: linear-gradient(135deg, #B44C43 0%, #8B3A33 100%) !important;
+}
+
+/* Text shadow for logo */
+.logo-text-shadow {
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3) !important;
+}
+
+/* Arabic text styling */
+.arabic-text {
+    font-family: 'Arial', 'Tahoma', sans-serif !important;
+    direction: rtl !important;
+    unicode-bidi: bidi-override !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .dr-offers-logo-text {
+        font-size: 48px !important;
+    }
+    
+    .arabic-text {
+        font-size: 18px !important;
+    }
+}
+
+/* Remove old styles that conflict */
+.primary-btn,
+.bg__primary,
+.forgot__password,
+.card-shadow {
+    /* These classes are now replaced by inline styles */
 }
