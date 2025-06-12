@@ -1,0 +1,119 @@
+:root {
+    /* Light mode variables */
+    --text-primary: #4A5568;
+    --text-hover: #2D3748;
+    --bg-primary: #FFFFFF;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        /* Dark mode variables */
+        --text-primary: #E2E8F0;
+        --text-hover: #FFFFFF;
+        --bg-primary: #1A202C;
+    }
+}
+
+.login__container{
+    min-width: 70vw !important;
+    
+.primary-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(186, 242, 149, 0.5);  
+}
+}
+.bg__primary{
+    background: linear-gradient(135deg, #a7cc8e 0%, #a7cc8e 100%) !important;
+}
+.form-control{  
+  background-color: rgba(255, 255, 255, 0.03) !important;
+  color:var(--cui-body-color) !important;
+  border: 1px solid #e2e8f0 !important;
+  padding: 0.75rem 1rem !important;
+  border-radius: 8px !important;
+  transition: all 0.3s ease !important;
+  backdrop-filter: blur(4px) !important;
+
+
+}
+.form-control::placeholder{
+  color: #7c8179 !important;
+} 
+.input-group-text {
+  background-color: #dddfe1 !important;
+  border: 1px solid #e9ecef !important;
+  color: #6c757d !important;
+}
+.primary-btn {
+  background: linear-gradient(135deg, #a7cc8e 0%, #83b25c 100%) !important;
+  border: none !important;
+  padding: 0.75rem 2rem !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  transition: all 0.3s ease !important;
+}
+.primary-btn:hover {
+  background-color: #7ba857;
+  color: white;
+  transform: scale(1.05) translateY(-2px) !important;
+  box-shadow: 0 4px 12px rgba(167, 204, 142, 0.7) !important;
+  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+.forgot__password{
+  color: #6c757d !important;
+  font-weight: 500 !important;
+  text-decoration: none !important;
+  transition: all 0.3s ease !important;
+}
+.forgot__password:hover {
+  color: #7ba857 !important;
+  text-decoration: underline !important;
+}
+.password-requirements {
+  list-style: none !important;
+  padding-left: 0 !important;
+  margin-top: 0.5rem !important;
+  font-size: 0.875rem !important;
+}
+.password-requirements li {
+  margin-bottom: 0.25rem !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+}
+.card-shadow {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05) !important;
+}
+.form-control:hover {
+  border-color: #262c38 !important;
+  transition: border-color 0.3s, background-color 0.3s;
+}
+.password-requirements li:hover {
+  color: #7ba857 !important;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.3s ease !important;
+  transform: scale(1.05);
+}
+.c-form-input {
+  transition: all 0.3s ease !important;
+}
+.c-form-input:hover,
+.c-form-input:focus {
+  border-color: #7ba857 !important;
+}
+
+.about-text {
+    color: var(--text-primary) !important;
+    transition: all 0.3s ease !important;
+}
+
+.about-text:hover {
+    color: var(--text-hover) !important;
+    transform: translateY(-1px) !important;
+}
+
+/* Optional: Add background color transition for container */
+.about-container {
+    background-color: var(--bg-primary) !important;
+    transition: background-color 0.3s ease !important;
+}

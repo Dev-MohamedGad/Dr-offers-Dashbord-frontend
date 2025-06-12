@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#f8f9fa;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e9ecef;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="documentGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f1f3f4;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="iconGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#6c757d;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#495057;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background circle -->
+  <circle cx="100" cy="100" r="95" fill="url(#bgGradient)" stroke="#dee2e6" stroke-width="2" opacity="0.8"/>
+  
+  <!-- Document/folder icon -->
+  <g transform="translate(50, 40)">
+    <!-- Folder body -->
+    <rect x="10" y="30" width="80" height="60" rx="4" fill="url(#documentGradient)" stroke="#ced4da" stroke-width="1.5"/>
+    <!-- Folder tab -->
+    <rect x="10" y="20" width="30" height="15" rx="2" fill="url(#documentGradient)" stroke="#ced4da" stroke-width="1.5"/>
+    
+    <!-- Document lines (empty state) -->
+    <line x1="20" y1="45" x2="50" y2="45" stroke="#adb5bd" stroke-width="2" opacity="0.5"/>
+    <line x1="20" y1="55" x2="70" y2="55" stroke="#adb5bd" stroke-width="2" opacity="0.5"/>
+    <line x1="20" y1="65" x2="40" y2="65" stroke="#adb5bd" stroke-width="2" opacity="0.5"/>
+    
+    <!-- X mark to indicate "no data" -->
+    <g transform="translate(60, 50)" opacity="0.7">
+      <circle cx="0" cy="0" r="12" fill="#dc3545" opacity="0.1"/>
+      <line x1="-6" y1="-6" x2="6" y2="6" stroke="#dc3545" stroke-width="2" stroke-linecap="round"/>
+      <line x1="6" y1="-6" x2="-6" y2="6" stroke="#dc3545" stroke-width="2" stroke-linecap="round"/>
+    </g>
+  </g>
+  
+  <!-- Magnifying glass -->
+  <g transform="translate(130, 120)">
+    <circle cx="0" cy="0" r="15" fill="none" stroke="url(#iconGradient)" stroke-width="3"/>
+    <line x1="10.5" y1="10.5" x2="20" y2="20" stroke="url(#iconGradient)" stroke-width="3" stroke-linecap="round"/>
+    <!-- Question mark inside -->
+    <text x="0" y="6" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="url(#iconGradient)">?</text>
+  </g>
+  
+  <!-- Floating dots for decoration -->
+  <circle cx="40" cy="60" r="2" fill="#adb5bd" opacity="0.5"/>
+  <circle cx="160" cy="50" r="1.5" fill="#adb5bd" opacity="0.4"/>
+  <circle cx="170" cy="150" r="2.5" fill="#adb5bd" opacity="0.3"/>
+  <circle cx="30" cy="170" r="1" fill="#adb5bd" opacity="0.5"/>
+  
+  <!-- Subtle shadow effect -->
+  <ellipse cx="100" cy="190" rx="60" ry="8" fill="#000000" opacity="0.1"/>
+</svg>

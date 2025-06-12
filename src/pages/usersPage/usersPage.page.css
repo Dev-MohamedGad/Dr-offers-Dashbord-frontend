@@ -1,0 +1,19 @@
+/* Users Page - Inline Styles */
+
+.users-table {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.users-table-pagination {
+  cursor: pointer;
+}
+
+.users-table-actions-btn {
+  min-width: 80px;
+  box-shadow: none;
+}
+
+.users-table-details-container {
+  transition: all 0.2s ease-in-out;
+} 

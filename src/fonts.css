@@ -1,0 +1,24 @@
+@font-face {
+  font-family: 'headerFont';
+  /* TODO: Replace with font you plan to use */
+  src: url('./fonts/tan-paradiso.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'bodyFont';
+  /* TODO: Replace with font you plan to use */
+  src: url('./fonts/Roboto-Regular.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'altBodyFont';
+  /* TODO: Replace with font you plan to use */
+  src: url('./fonts/ArchivoBlack-Regular.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+  

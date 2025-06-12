@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#f8f9fa;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e9ecef;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="person" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#6c757d;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#495057;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background circle -->
+  <circle cx="50" cy="50" r="50" fill="url(#bg)" stroke="#dee2e6" stroke-width="1"/>
+  
+  <!-- Person icon -->
+  <g fill="url(#person)">
+    <!-- Head -->
+    <circle cx="50" cy="35" r="12"/>
+    <!-- Body -->
+    <path d="M 25 75 Q 25 60 35 55 Q 42 52 50 52 Q 58 52 65 55 Q 75 60 75 75 L 75 85 L 25 85 Z"/>
+  </g>
+  
+  <!-- Subtle highlight -->
+  <circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
+</svg> 

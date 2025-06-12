@@ -1,0 +1,436 @@
+.bg__primary {
+  background: linear-gradient(135deg, #b8d5a7 0%, #9fc088 100%) !important;
+}
+.primary-text {
+  color: #5c8044 !important;
+}
+.secondary-text {
+  color: #4a5d6e !important;
+}
+.Formik__error--message {
+  color: #e65c5c !important;
+  font-size: 16px;
+  display: block;
+}
+.primary-btn {
+  background: linear-gradient(135deg, #9fc088 0%, #7da863 100%) !important;
+  border: none !important;
+  padding: 0.75rem 2rem !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  color: #d1cdcd !important;
+  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+
+  &:hover {
+    background-color: #8fb873 !important;
+    color: #ffffff !important;
+    transform: scale(1.05) translateY(-2px) !important;
+    box-shadow: 0 4px 12px rgba(159, 192, 136, 0.5) !important;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(159, 192, 136, 0.4);
+  }
+}
+
+// Form controls with transparent background
+.form-control {
+  background-color: rgba(255, 255, 255, 0.03) !important;
+  color: var(--cui-body-color) !important;
+  border: 1px solid #e2e8f0 !important;
+  padding: 0.75rem 1rem !important;
+  border-radius: 8px !important;
+  transition: all 0.3s ease !important;
+  backdrop-filter: blur(4px) !important;
+
+  &:focus {
+    background-color: rgba(255, 255, 255, 0.08) !important;
+    border-color: #9fc088 !important;
+    box-shadow: 0 0 0 0.2rem rgba(159, 192, 136, 0.15) !important;
+  }
+
+  &:hover {
+    border-color: #9fc088 !important;
+    background-color: rgba(255, 255, 255, 0.05) !important;
+  }
+
+  &::placeholder {
+    color: var(--cui-body-color) !important;
+    opacity: 0.5 !important;
+  }
+
+  // Required field styling
+  &[required] {
+    border-left: 3px solid rgba(159, 192, 136, 0.8) !important;
+    
+    &::placeholder {
+      color: var(--bs-secondary-color) !important;
+    }
+  }
+
+  // Invalid state
+  &:invalid, &.is-invalid {
+    border-left: 3px solid rgba(230, 92, 92, 0.8) !important;
+    background-color: rgba(230, 92, 92, 0.05) !important;
+  }
+}
+
+// Label styling
+.form-label {
+  color: #4a5568 !important;
+  font-weight: 500 !important;
+  margin-bottom: 0.5rem !important;
+  font-size: 0.95rem !important;
+
+  // Required indicator
+  &.required::after {
+    content: "*";
+    color: #9fc088;
+    margin-left: 4px;
+  }
+}
+
+// Input group styling to match transparent theme
+.input-group-text {
+  background-color: rgba(248, 249, 250, 0.05) !important;
+  border: 1px solid #e2e8f0 !important;
+  color: #4a5568 !important;
+  backdrop-filter: blur(4px) !important;
+}
+
+// Form validation messages
+.Formik__error--message {
+  color: #e65c5c !important;
+  font-size: 0.875rem !important;
+  margin-top: 0.25rem !important;
+  display: block !important;
+  opacity: 0.9 !important;
+}
+
+// Success validation state
+.is-valid {
+  border-left: 3px solid #9fc088 !important;
+  
+  &:focus {
+    border-color: #9fc088 !important;
+    box-shadow: 0 0 0 0.2rem rgba(159, 192, 136, 0.15) !important;
+  }
+}
+
+// Field helper text
+.form-text {
+  color: #718096 !important;
+  font-size: 0.875rem !important;
+  margin-top: 0.25rem !important;
+}
+
+// Form section styling
+.form-section {
+  background-color: #ffffff !important;
+  padding: 1.5rem !important;
+  border-radius: 8px !important;
+  border: 1px solid #e2e8f0 !important;
+  margin-bottom: 1.5rem !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05) !important;
+}
+
+// Section title
+.section-title {
+  color: #2d3748 !important;
+  font-size: 1.25rem !important;
+  font-weight: 600 !important;
+  margin-bottom: 1.5rem !important;
+  padding-bottom: 0.75rem !important;
+  border-bottom: 1px solid #e2e8f0 !important;
+}
+
+// Language indicator
+.language-indicator {
+  color: #718096 !important;
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+  margin-left: 0.5rem !important;
+  opacity: 0.8 !important;
+}
+
+// Table and Filter Styles
+.table-header {
+  background-color: #2a2f35 !important;
+  color: #e1e5ea !important;
+  font-weight: 500 !important;
+  padding: 12px 16px !important;
+  border-bottom: 2px solid #363b42 !important;
+}
+
+.table-row {
+  background-color: #1f2327 !important;
+  transition: background-color 0.2s ease !important;
+
+  &:hover {
+    background-color: #2a2f35 !important;
+  }
+}
+
+.table-cell {
+  color: #d1d5db !important;
+  padding: 12px 16px !important;
+  border-bottom: 1px solid #363b42 !important;
+}
+
+// Status colors
+.status-available {
+  color: #7fc88c !important;
+  font-weight: 500 !important;
+}
+
+// Filter controls
+.filter-select {
+  background-color: #2a2f35 !important;
+  color: #e1e5ea !important;
+  border: 1px solid #363b42 !important;
+  border-radius: 6px !important;
+  padding: 8px 12px !important;
+  transition: all 0.2s ease !important;
+
+  &:hover {
+    border-color: #4a5058 !important;
+  }
+
+  &:focus {
+    border-color: #8fb873 !important;
+    box-shadow: 0 0 0 2px rgba(143, 184, 115, 0.2) !important;
+  }
+}
+
+.filter-input {
+  background-color: #2a2f35 !important;
+  color: #e1e5ea !important;
+  border: 1px solid #363b42 !important;
+  border-radius: 6px !important;
+  padding: 8px 12px !important;
+  
+  &::placeholder {
+    color: #6b7280 !important;
+  }
+
+  &:focus {
+    border-color: #8fb873 !important;
+    box-shadow: 0 0 0 2px rgba(143, 184, 115, 0.2) !important;
+  }
+}
+
+// Action buttons
+.action-button {
+  padding: 6px 12px !important;
+  border-radius: 4px !important;
+  font-weight: 500 !important;
+  transition: all 0.2s ease !important;
+}
+
+.details-button {
+  color: #90caf9 !important;
+  
+  &:hover {
+    color: #42a5f5 !important;
+    background-color: rgba(144, 202, 249, 0.1) !important;
+  }
+}
+
+.edit-button {
+  color: #ffd54f !important;
+  
+  &:hover {
+    color: #ffb300 !important;
+    background-color: rgba(255, 213, 79, 0.1) !important;
+  }
+}
+
+.delete-button {
+  color: #ef9a9a !important;
+  
+  &:hover {
+    color: #e57373 !important;
+    background-color: rgba(239, 154, 154, 0.1) !important;
+  }
+}
+
+.hide-button {
+  color: #b39ddb !important;
+  
+  &:hover {
+    color: #9575cd !important;
+    background-color: rgba(179, 157, 219, 0.1) !important;
+  }
+}
+
+// Column headers
+.column-header {
+  font-weight: 500 !important;
+  color: #e1e5ea !important;
+  cursor: pointer !important;
+  transition: color 0.2s ease !important;
+
+  &:hover {
+    color: #8fb873 !important;
+  }
+}
+
+// Filter section
+.filter-section {
+  background-color: #1f2327 !important;
+  padding: 16px !important;
+  border-radius: 8px !important;
+  margin-bottom: 20px !important;
+  border: 1px solid #363b42 !important;
+}
+
+.filter-label {
+  color: #9ca3af !important;
+  font-weight: 500 !important;
+  margin-bottom: 6px !important;
+}
+
+// Login specific styles
+.login__container {
+  min-width: 70vw !important;
+  
+  .primary-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(186, 242, 149, 0.5);
+  }
+}
+
+// Form controls for login
+.form-control {
+  background-color: rgba(255, 255, 255, 0.03) !important;
+  color: var(--cui-body-color) !important;
+  border: 1px solid #e2e8f0 !important;
+  padding: 0.75rem 1rem !important;
+  border-radius: 8px !important;
+  transition: all 0.3s ease !important;
+  backdrop-filter: blur(4px) !important;
+
+  &:focus {
+    background-color: rgba(255, 255, 255, 0.08) !important;
+    border-color: #9fc088 !important;
+    box-shadow: 0 0 0 0.2rem rgba(159, 192, 136, 0.15) !important;
+  }
+
+  &:hover {
+    border-color: #9fc088 !important;
+    background-color: rgba(255, 255, 255, 0.05) !important;
+  }
+
+  &::placeholder {
+    color: var(--cui-body-color) !important;
+    opacity: 0.5 !important;
+  }
+}
+
+// Login button styling
+.primary-btn {
+  background: linear-gradient(135deg, #9fc088 0%, #7da863 100%) !important;
+  border: none !important;
+  padding: 0.75rem 2rem !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  color: #ffffff !important;
+  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+
+  &:hover {
+    background-color: #8fb873 !important;
+    color: #ffffff !important;
+    transform: scale(1.05) translateY(-2px) !important;
+    box-shadow: 0 4px 12px rgba(159, 192, 136, 0.5) !important;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(159, 192, 136, 0.4);
+  }
+}
+
+// Forgot password link
+.forgot__password {
+  color: #6c757d !important;
+  font-weight: 500 !important;
+  text-decoration: none !important;
+  transition: all 0.3s ease !important;
+
+  &:hover {
+    color: #7ba857 !important;
+    text-decoration: underline !important;
+  }
+}
+
+// Password requirements list
+.password-requirements {
+  list-style: none !important;
+  padding-left: 0 !important;
+  margin-top: 0.5rem !important;
+  font-size: 0.875rem !important;
+
+  li {
+    margin-bottom: 0.25rem !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+    color: rgba(148, 163, 184, 0.8) !important;
+
+    &:hover {
+      color: #7ba857 !important;
+      cursor: pointer;
+      transition: color 0.3s ease, transform 0.3s ease !important;
+      transform: scale(1.05);
+    }
+  }
+}
+
+// Card shadow for login container
+.card-shadow {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05) !important;
+}
+
+// Input group styling
+.input-group-text {
+  background-color: rgba(248, 249, 250, 0.05) !important;
+  border: 1px solid #e2e8f0 !important;
+  color: #4a5568 !important;
+  backdrop-filter: blur(4px) !important;
+}
+
+// Form validation states
+.is-valid {
+  border-left: 3px solid rgba(159, 192, 136, 0.8) !important;
+}
+
+.is-invalid {
+  border-left: 3px solid rgba(230, 92, 92, 0.8) !important;
+  background-color: rgba(230, 92, 92, 0.05) !important;
+}
+
+// Form text helpers
+.form-text {
+  color: rgba(113, 128, 150, 0.8) !important;
+  font-size: 0.875rem !important;
+  margin-top: 0.25rem !important;
+}
+
+// Login form section
+.login-form-section {
+  background-color: rgba(255, 255, 255, 0.02) !important;
+  padding: 2rem !important;
+  border-radius: 12px !important;
+  border: 1px solid rgba(226, 232, 240, 0.1) !important;
+  backdrop-filter: blur(8px) !important;
+}
+
+// Login page title
+.login-title {
+  color: #2d3748 !important;
+  font-size: 1.5rem !important;
+  font-weight: 600 !important;
+  margin-bottom: 1.5rem !important;
+  text-align: center !important;
+}
