@@ -3,10 +3,9 @@ import CIcon from '@coreui/icons-react';
 import {
   cilPeople,
   cilHome,
-  cilFindInPage,
-  cilMap,
+  cilTag,
+  cilGrid,
   cilApplications,
-  cilWindow,
 } from '@coreui/icons';
 import { CNavItem } from '@coreui/react-pro';
 
@@ -34,40 +33,21 @@ const _nav: NavItem[] = [
   },
   {
     component: CNavItem,
+    name: 'Brands',
+    to: '/brands',
+    icon: <CIcon icon={cilGrid} customClassName="nav-icon" />,
+  },
+  {
+    component: CNavItem,
+    name: 'Offers',
+    to: '/offers',
+    icon: <CIcon icon={cilTag} customClassName="nav-icon" />,
+  },
+  {
+    component: CNavItem,
     name: 'Users',
     to: '/users',
     icon: <CIcon icon={cilPeople} customClassName="nav-icon" />,
-  },
-  {
-    component: CNavItem,
-    name: 'Developers',
-    to: '/developers',
-    icon: <CIcon icon={cilPeople} customClassName="nav-icon" />,
-  },
-  {
-    component: CNavItem,
-    name: 'Opportunities',
-    to: '/opportunities',
-    icon: <CIcon icon={cilFindInPage} customClassName="nav-icon" />,
-  },
-
-  {
-    component: CNavItem,
-    name: 'Booking',
-    to: '/booking',
-    icon: <CIcon icon={cilMap} customClassName="nav-icon" />,
-  },
-  {
-    component: CNavItem,
-    name: 'Newsletter',
-    to: '/newsletter',
-    icon: <CIcon icon={cilApplications} customClassName="nav-icon" />,
-  },
-  {
-    component: CNavItem,
-    name: 'Promotions',
-    to: '/promotions',
-    icon: <CIcon icon={cilApplications} customClassName="nav-icon" />,
   },
 ];
 

@@ -218,6 +218,7 @@
     border-color: #B44C43 !important;
     box-shadow: 0 0 0 2px rgba(180, 76, 67, 0.2) !important;
   }
+
 }
 
 // Action buttons
@@ -445,4 +446,137 @@
   color: #B44C43 !important;
   font-weight: 600 !important;
   font-size: 2rem !important;
+}
+
+// Page title styling
+.brands-title,
+.offers-title,
+.users-title {
+  color: #B44C43 !important;
+  font-weight: 600 !important;
+  font-size: 2rem !important;
+  margin-bottom: 0 !important;
+}
+
+// Table styling improvements
+.users-table,
+.brands-table,
+.offers-table {
+  background: white !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05) !important;
+}
+
+.users-table .table th,
+.brands-table .table th,
+.offers-table .table th {
+  background-color: #f8fafc !important;
+  border-bottom: 2px solid #e2e8f0 !important;
+  font-weight: 600 !important;
+  color: #4a5568 !important;
+  padding: 1rem !important;
+}
+
+.users-table .table td,
+.brands-table .table td,
+.offers-table .table td {
+  padding: 1rem !important;
+  vertical-align: middle !important;
+  border-bottom: 1px solid #e2e8f0 !important;
+}
+
+.users-table .table tr:hover,
+.brands-table .table tr:hover,
+.offers-table .table tr:hover {
+  background-color: rgba(180, 76, 67, 0.05) !important;
+}
+
+// Badge styling for consistency
+.badge {
+  font-size: 0.75rem !important;
+  font-weight: 500 !important;
+  padding: 0.375rem 0.75rem !important;
+  border-radius: 6px !important;
+}
+
+// Card hover effects
+.brand-card,
+.offer-card,
+.user-card {
+  transition: all 0.3s ease !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+}
+
+.brand-card:hover,
+.offer-card:hover,
+.user-card:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 25px rgba(180, 76, 67, 0.15) !important;
+  border-color: #B44C43 !important;
+}
+
+// Action buttons styling
+.action-buttons .btn {
+  margin: 0 0.125rem !important;
+  border-radius: 6px !important;
+  padding: 0.375rem 0.75rem !important;
+  font-size: 0.875rem !important;
+}
+
+// Status indicators
+.status-active {
+  color: #10b981 !important;
+  background-color: rgba(16, 185, 129, 0.1) !important;
+}
+
+.status-pending {
+  color: #f59e0b !important;
+  background-color: rgba(245, 158, 11, 0.1) !important;
+}
+
+.status-rejected,
+.status-expired {
+  color: #d63384 !important;
+  background-color: rgba(214, 51, 132, 0.1) !important;
+}
+
+// Page header styling
+.page-header {
+  margin-bottom: 2rem !important;
+  padding-bottom: 1rem !important;
+  border-bottom: 1px solid #e2e8f0 !important;
+}
+
+.page-header h2 {
+  color: #B44C43 !important;
+  font-weight: 600 !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.page-header p {
+  color: #6b7280 !important;
+  margin-bottom: 0 !important;
+}
+
+// Responsive improvements
+@media (max-width: 768px) {
+  .brands-title,
+  .offers-title,
+  .users-title {
+    font-size: 1.5rem !important;
+  }
+  
+  .page-header .d-flex {
+    flex-direction: column !important;
+    gap: 1rem !important;
+    align-items: stretch !important;
+  }
+  
+  .action-buttons {
+    flex-wrap: wrap !important;
+    gap: 0.5rem !important;
+  }
 }

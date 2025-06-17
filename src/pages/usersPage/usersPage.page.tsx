@@ -63,10 +63,10 @@ const UsersPage = () => {
       },
     },
     {
-      key: 'gender',
-      label: 'Gender',
+      key: 'brand_name',
+      label: 'Brand',
       _style: {
-        width: '10%',
+        width: '12%',
         ...columnCommonStyles,
       },
     },
@@ -79,26 +79,26 @@ const UsersPage = () => {
       },
     },
     {
-      key: 'job_title',
+      key: 'role',
       label: 'Role',
       _style: {
-        width: '12%',
+        width: '10%',
         ...columnCommonStyles,
       },
     },
     {
-      key: 'country',
-      label: 'Location',
+      key: 'address',
+      label: 'Address',
       _style: {
-        width: '12%',
+        width: '15%',
         ...columnCommonStyles,
       },
     },
     {
-      key: 'is_verified',
-      label: 'Status',
+      key: 'verification_status',
+      label: 'Verification',
       _style: {
-        width: '11%',
+        width: '12%',
         ...columnCommonStyles,
       },
     },

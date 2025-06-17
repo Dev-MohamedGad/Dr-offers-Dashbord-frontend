@@ -1,8 +1,49 @@
 :root {
+    /* Light mode variables */
     --primary-color: #B44C43;
     --logo-color: #B44C43;
     --background-color: #FFFFFF;
     --secondary-background: #F7EBE8;
     --text-color: #0A0A0A;
     --accent-color: #310A31;
+    
+    /* Brand color variations for light mode */
+    --brand-primary: #B44C43;
+    --brand-primary-hover: #9d3e36;
+    --brand-primary-light: rgba(180, 76, 67, 0.1);
+    --brand-primary-dark: rgba(180, 76, 67, 0.9);
+}
+
+/* Dark mode variables */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --primary-color: #C55A50;
+        --logo-color: #C55A50;
+        --background-color: #1A1A1A;
+        --secondary-background: #2D2D2D;
+        --text-color: #E2E8F0;
+        --accent-color: #4A5568;
+        
+        /* Brand color variations for dark mode */
+        --brand-primary: #C55A50;
+        --brand-primary-hover: #B44C43;
+        --brand-primary-light: rgba(197, 90, 80, 0.15);
+        --brand-primary-dark: rgba(197, 90, 80, 0.8);
+    }
+}
+
+/* Manual dark mode class support */
+[data-coreui-theme="dark"] {
+    --primary-color: #C55A50;
+    --logo-color: #C55A50;
+    --background-color: #1A1A1A;
+    --secondary-background: #2D2D2D;
+    --text-color: #E2E8F0;
+    --accent-color: #4A5568;
+    
+    /* Brand color variations for dark mode */
+    --brand-primary: #C55A50;
+    --brand-primary-hover: #B44C43;
+    --brand-primary-light: rgba(197, 90, 80, 0.15);
+    --brand-primary-dark: rgba(197, 90, 80, 0.8);
 }

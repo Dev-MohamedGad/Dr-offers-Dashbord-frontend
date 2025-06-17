@@ -1,4 +1,4 @@
-$primary-dark:       desaturate($primary, 10%) !default;
+$primary-dark:       #C55A50 !default;
 $success-dark:       desaturate($success, 10%) !default;
 $info-dark:          desaturate($info, 10%) !default;
 $warning-dark:       desaturate($warning, 10%) !default;
@@ -55,3 +55,6 @@ $theme-gradients-dark: (
   "warning":    $warning-gradient-dark,
   "danger":     $danger-gradient-dark
 ) !default;
+
+$body-color-dark:          #E2E8F0 !default;
+$secondary-color-dark:     #A0AEC0 !default;
