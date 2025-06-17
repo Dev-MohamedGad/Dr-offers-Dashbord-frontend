@@ -13,7 +13,7 @@ import {
 
 import { AppSidebarNav } from '../components/AppSidebarNav';
 
-import logo from '@assets/logo.svg';
+import logo from '@assets/dr-offer-logo.png';
 
 // sidebar nav config
 import navigation from '../../_nav';

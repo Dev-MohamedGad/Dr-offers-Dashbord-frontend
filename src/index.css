@@ -18,11 +18,11 @@
 
 a {
   font-weight: 500;
-  color: var(--orange-color);
+  color: var(--logo-color);
   text-decoration: inherit;
 }
 a:hover {
-  color: var(--orange-color);
+  color: var(--logo-color);
 }
 
 body {
@@ -50,7 +50,7 @@ button {
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: var(--orange-color);
+  border-color: var(--logo-color);
 }
 button:focus,
 button:focus-visible {
@@ -63,7 +63,7 @@ button:focus-visible {
     background-color: var(--white-color);
   }
   a:hover {
-    color: var(--orange-color);
+    color: var(--logo-color);
   }
   button {
     background-color: var(--white-color);

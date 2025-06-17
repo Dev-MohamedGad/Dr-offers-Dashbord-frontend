@@ -16,20 +16,20 @@
 }
 
 .react-datepicker__day--selected {
-  background-color: #28a745 !important;
+  background-color: #B44C43 !important;
   border-radius: 50%;
   color: white !important;
 }
 
 .react-datepicker__day--in-range {
-  background-color: rgba(40, 167, 69, 0.2) !important;
-  color: #28a745 !important;
+  background-color: rgba(180, 76, 67, 0.2) !important;
+  color: #B44C43 !important;
 }
 
 .react-datepicker__day--excluded {
-  color: #fa5252 !important;
+  color: #f59e0b !important;
   text-decoration: line-through;
-  background-color: #fff5f5 !important;
+  background-color: #fffbeb !important;
   pointer-events: none;
 }
 
@@ -61,9 +61,9 @@
 .date-picker-container input:focus {
   color: #212529;
   background-color: #fff;
-  border-color: #28a745;
+  border-color: #B44C43;
   outline: 0;
-  box-shadow: 0 0 0 0.25rem rgba(40, 167, 69, 0.25);
+  box-shadow: 0 0 0 0.25rem rgba(180, 76, 67, 0.25);
 }
 
 .react-datepicker__month-container {
@@ -79,13 +79,13 @@
 }
 
 .react-datepicker__day:hover {
-  background-color: rgba(40, 167, 69, 0.1) !important;
+  background-color: rgba(180, 76, 67, 0.1) !important;
 }
 
 .date-unavailable {
   position: relative;
-  color: #fa5252 !important;
-  background-color: #fff5f5 !important;
+  color: #f59e0b !important;
+  background-color: #fffbeb !important;
 }
 
 .date-unavailable::after {
@@ -95,7 +95,7 @@
   left: 0;
   right: 0;
   height: 1px;
-  background-color: #fa5252;
+  background-color: #f59e0b;
   transform: rotate(-45deg);
 }
 
@@ -108,10 +108,10 @@
 }
 
 .react-datepicker__time-list-item--selected {
-  background-color: #28a745 !important;
+  background-color: #B44C43 !important;
   color: white !important;
 }
 
 .react-datepicker__time-list-item:hover {
-  background-color: rgba(40, 167, 69, 0.1) !important;
+  background-color: rgba(180, 76, 67, 0.1) !important;
 } 

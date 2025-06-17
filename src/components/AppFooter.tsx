@@ -4,10 +4,10 @@ import { CFooter } from '@coreui/react-pro';
 const AppFooter = () => {
   return (
     <CFooter className="px-4">
-      <div>PropCut</div>
+      <div>Dr.Offers</div>
       <div className="ms-auto">
         <span className="me-1">Powered by</span>
-        PropCut Admin Panel
+        Dr.Offers Admin Panel
       </div>
     </CFooter>
   );

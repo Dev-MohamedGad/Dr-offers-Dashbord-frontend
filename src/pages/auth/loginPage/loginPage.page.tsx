@@ -177,22 +177,7 @@ const Login = () => {
                           {isLoading ? 'Signing in...' : 'SIGN IN'}
                         </CButton>
 
-                        <div className="text-center">
-                          <span className="text-muted" style={{ fontSize: '14px' }}>
-                            I don't have an account ? 
-                          </span>
-                          <a 
-                            href="#" 
-                            className="text-decoration-none ms-1"
-                            style={{ 
-                              color: '#B44C43', 
-                              fontSize: '14px',
-                              fontWeight: '600'
-                            }}
-                          >
-                            Sign up
-                          </a>
-                        </div>
+                      
                       </Form>
                     )}
                   </Formik>

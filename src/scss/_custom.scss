@@ -1,36 +1,36 @@
 .bg__primary {
-  background: linear-gradient(135deg, #b8d5a7 0%, #9fc088 100%) !important;
+  background: linear-gradient(135deg, #d4a59a 0%, #B44C43 100%) !important;
 }
 .primary-text {
-  color: #5c8044 !important;
+  color: #B44C43 !important;
 }
 .secondary-text {
   color: #4a5d6e !important;
 }
 .Formik__error--message {
-  color: #e65c5c !important;
+  color: #d63384 !important;
   font-size: 16px;
   display: block;
 }
 .primary-btn {
-  background: linear-gradient(135deg, #9fc088 0%, #7da863 100%) !important;
+  background: linear-gradient(135deg, #B44C43 0%, #9d3e36 100%) !important;
   border: none !important;
   padding: 0.75rem 2rem !important;
   border-radius: 8px !important;
   font-weight: 600 !important;
-  color: #d1cdcd !important;
+  color: #ffffff !important;
   transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
 
   &:hover {
-    background-color: #8fb873 !important;
+    background-color: #9d3e36 !important;
     color: #ffffff !important;
     transform: scale(1.05) translateY(-2px) !important;
-    box-shadow: 0 4px 12px rgba(159, 192, 136, 0.5) !important;
+    box-shadow: 0 4px 12px rgba(180, 76, 67, 0.5) !important;
   }
 
   &:focus {
     outline: none;
-    box-shadow: 0 0 0 0.2rem rgba(159, 192, 136, 0.4);
+    box-shadow: 0 0 0 0.2rem rgba(180, 76, 67, 0.4);
   }
 }
 
@@ -46,12 +46,12 @@
 
   &:focus {
     background-color: rgba(255, 255, 255, 0.08) !important;
-    border-color: #9fc088 !important;
-    box-shadow: 0 0 0 0.2rem rgba(159, 192, 136, 0.15) !important;
+    border-color: #B44C43 !important;
+    box-shadow: 0 0 0 0.2rem rgba(180, 76, 67, 0.15) !important;
   }
 
   &:hover {
-    border-color: #9fc088 !important;
+    border-color: #B44C43 !important;
     background-color: rgba(255, 255, 255, 0.05) !important;
   }
 
@@ -62,7 +62,7 @@
 
   // Required field styling
   &[required] {
-    border-left: 3px solid rgba(159, 192, 136, 0.8) !important;
+    border-left: 3px solid rgba(180, 76, 67, 0.8) !important;
     
     &::placeholder {
       color: var(--bs-secondary-color) !important;
@@ -71,8 +71,8 @@
 
   // Invalid state
   &:invalid, &.is-invalid {
-    border-left: 3px solid rgba(230, 92, 92, 0.8) !important;
-    background-color: rgba(230, 92, 92, 0.05) !important;
+    border-left: 3px solid rgba(214, 51, 132, 0.8) !important;
+    background-color: rgba(214, 51, 132, 0.05) !important;
   }
 }
 
@@ -86,7 +86,7 @@
   // Required indicator
   &.required::after {
     content: "*";
-    color: #9fc088;
+    color: #B44C43;
     margin-left: 4px;
   }
 }
@@ -101,7 +101,7 @@
 
 // Form validation messages
 .Formik__error--message {
-  color: #e65c5c !important;
+  color: #d63384 !important;
   font-size: 0.875rem !important;
   margin-top: 0.25rem !important;
   display: block !important;
@@ -110,11 +110,11 @@
 
 // Success validation state
 .is-valid {
-  border-left: 3px solid #9fc088 !important;
+  border-left: 3px solid #B44C43 !important;
   
   &:focus {
-    border-color: #9fc088 !important;
-    box-shadow: 0 0 0 0.2rem rgba(159, 192, 136, 0.15) !important;
+    border-color: #B44C43 !important;
+    box-shadow: 0 0 0 0.2rem rgba(180, 76, 67, 0.15) !important;
   }
 }
 
@@ -180,7 +180,7 @@
 
 // Status colors
 .status-available {
-  color: #7fc88c !important;
+  color: #B44C43 !important;
   font-weight: 500 !important;
 }
 
@@ -198,8 +198,8 @@
   }
 
   &:focus {
-    border-color: #8fb873 !important;
-    box-shadow: 0 0 0 2px rgba(143, 184, 115, 0.2) !important;
+    border-color: #B44C43 !important;
+    box-shadow: 0 0 0 2px rgba(180, 76, 67, 0.2) !important;
   }
 }
 
@@ -215,8 +215,8 @@
   }
 
   &:focus {
-    border-color: #8fb873 !important;
-    box-shadow: 0 0 0 2px rgba(143, 184, 115, 0.2) !important;
+    border-color: #B44C43 !important;
+    box-shadow: 0 0 0 2px rgba(180, 76, 67, 0.2) !important;
   }
 }
 
@@ -247,11 +247,11 @@
 }
 
 .delete-button {
-  color: #ef9a9a !important;
+  color: #d63384 !important;
   
   &:hover {
-    color: #e57373 !important;
-    background-color: rgba(239, 154, 154, 0.1) !important;
+    color: #b02a5b !important;
+    background-color: rgba(214, 51, 132, 0.1) !important;
   }
 }
 
@@ -272,7 +272,7 @@
   transition: color 0.2s ease !important;
 
   &:hover {
-    color: #8fb873 !important;
+    color: #B44C43 !important;
   }
 }
 
@@ -297,7 +297,7 @@
   
   .primary-btn:focus {
     outline: none;
-    box-shadow: 0 0 0 0.2rem rgba(186, 242, 149, 0.5);
+    box-shadow: 0 0 0 0.2rem rgba(180, 76, 67, 0.5);
   }
 }
 
@@ -313,12 +313,12 @@
 
   &:focus {
     background-color: rgba(255, 255, 255, 0.08) !important;
-    border-color: #9fc088 !important;
-    box-shadow: 0 0 0 0.2rem rgba(159, 192, 136, 0.15) !important;
+    border-color: #B44C43 !important;
+    box-shadow: 0 0 0 0.2rem rgba(180, 76, 67, 0.15) !important;
   }
 
   &:hover {
-    border-color: #9fc088 !important;
+    border-color: #B44C43 !important;
     background-color: rgba(255, 255, 255, 0.05) !important;
   }
 
@@ -330,7 +330,7 @@
 
 // Login button styling
 .primary-btn {
-  background: linear-gradient(135deg, #9fc088 0%, #7da863 100%) !important;
+  background: linear-gradient(135deg, #B44C43 0%, #9d3e36 100%) !important;
   border: none !important;
   padding: 0.75rem 2rem !important;
   border-radius: 8px !important;
@@ -339,15 +339,15 @@
   transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
 
   &:hover {
-    background-color: #8fb873 !important;
+    background-color: #9d3e36 !important;
     color: #ffffff !important;
     transform: scale(1.05) translateY(-2px) !important;
-    box-shadow: 0 4px 12px rgba(159, 192, 136, 0.5) !important;
+    box-shadow: 0 4px 12px rgba(180, 76, 67, 0.5) !important;
   }
 
   &:focus {
     outline: none;
-    box-shadow: 0 0 0 0.2rem rgba(159, 192, 136, 0.4);
+    box-shadow: 0 0 0 0.2rem rgba(180, 76, 67, 0.4);
   }
 }
 
@@ -359,7 +359,7 @@
   transition: all 0.3s ease !important;
 
   &:hover {
-    color: #7ba857 !important;
+    color: #B44C43 !important;
     text-decoration: underline !important;
   }
 }
@@ -379,7 +379,7 @@
     color: rgba(148, 163, 184, 0.8) !important;
 
     &:hover {
-      color: #7ba857 !important;
+      color: #B44C43 !important;
       cursor: pointer;
       transition: color 0.3s ease, transform 0.3s ease !important;
       transform: scale(1.05);
@@ -402,12 +402,12 @@
 
 // Form validation states
 .is-valid {
-  border-left: 3px solid rgba(159, 192, 136, 0.8) !important;
+  border-left: 3px solid rgba(180, 76, 67, 0.8) !important;
 }
 
 .is-invalid {
-  border-left: 3px solid rgba(230, 92, 92, 0.8) !important;
-  background-color: rgba(230, 92, 92, 0.05) !important;
+  border-left: 3px solid rgba(214, 51, 132, 0.8) !important;
+  background-color: rgba(214, 51, 132, 0.05) !important;
 }
 
 // Form text helpers
@@ -433,4 +433,16 @@
   font-weight: 600 !important;
   margin-bottom: 1.5rem !important;
   text-align: center !important;
+}
+
+// Dashboard title styling to match logo
+.fs-2.fw-semibold.text-primary {
+  color: #B44C43 !important;
+}
+
+// Dashboard specific title
+.dashboard-title {
+  color: #B44C43 !important;
+  font-weight: 600 !important;
+  font-size: 2rem !important;
 }
