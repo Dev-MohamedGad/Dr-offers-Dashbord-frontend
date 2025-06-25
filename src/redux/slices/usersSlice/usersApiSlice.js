@@ -5,10 +5,9 @@ import { apiSlice } from "@redux/baseQuery"
 export const usersApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     usersList: builder.query({
-      query: ({ page, perPage }) => ({
+      query: ({ page = 1, perPage = 10 }) => ({
         url: `/users?page=${page}&perPage=${perPage}`,    
         method: 'GET',
-            
       }),
       providesTags: ['users']
     }),
@@ -16,7 +15,6 @@ export const usersApiSlice = apiSlice.injectEndpoints({
       query: (id) => ({
         url: `/users/${id}`,
         method: 'GET',
-        
       }),
     }),
     updateUserImage: builder.mutation({

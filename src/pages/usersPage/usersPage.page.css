@@ -16,4 +16,507 @@
 
 .users-table-details-container {
   transition: all 0.2s ease-in-out;
+}
+
+/* Users Page Container */
+.users-container {
+  padding: 2rem 1rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Header Section */
+.users-header {
+  margin-bottom: 2rem;
+}
+
+.users-title {
+  color: #1a1a1a;
+  font-weight: 600;
+  font-size: 1.875rem;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.025em;
+}
+
+.text-medium-emphasis {
+  color: #6c757d;
+  font-size: 0.875rem;
+}
+
+/* Filter Button */
+.filter-btn {
+  background-color: #B44C43;
+  border-color: #B44C43;
+  color: white;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.filter-btn:hover {
+  background-color: #9a3f37;
+  border-color: #9a3f37;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(180, 76, 67, 0.2);
+}
+
+.filter-btn:active {
+  transform: translateY(0);
+}
+
+.filter-badge {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  color: #B44C43 !important;
+  font-weight: 600;
+  padding: 0.25rem 0.5rem;
+}
+
+/* Filter Dropdown */
+.filter-dropdown {
+  min-width: 280px;
+  padding: 1.25rem;
+  border: 1px solid #e9ecef;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
+}
+
+.filter-section {
+  margin-bottom: 1.25rem;
+}
+
+.filter-section:last-child {
+  margin-bottom: 0;
+}
+
+.filter-label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: #495057;
+  margin-bottom: 0.75rem;
+}
+
+.filter-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.filter-btn-active {
+  background-color: #B44C43;
+  border-color: #B44C43;
+  color: white;
+  font-size: 0.813rem;
+  padding: 0.375rem 0.75rem;
+  transition: all 0.2s ease;
+}
+
+.filter-btn-inactive {
+  border-color: #B44C43;
+  color: #B44C43;
+  background-color: transparent;
+  font-size: 0.813rem;
+  padding: 0.375rem 0.75rem;
+  transition: all 0.2s ease;
+}
+
+.filter-btn-inactive:hover {
+  background-color: rgba(180, 76, 67, 0.1);
+  border-color: #B44C43;
+  color: #B44C43;
+}
+
+.filter-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1rem;
+  border-top: 1px solid #e9ecef;
+  margin-top: 1rem;
+}
+
+.filter-count {
+  font-size: 0.813rem;
+  color: #6c757d;
+}
+
+/* Add User Button */
+.add-user-btn {
+  background-color: #B44C43;
+  border-color: #B44C43;
+  color: white;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.add-user-btn:hover {
+  background-color: #9a3f37;
+  border-color: #9a3f37;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(180, 76, 67, 0.2);
+}
+
+/* Main Card */
+.users-card {
+  border: none;
+  border-radius: 0.75rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+/* Table Styling */
+.users-table {
+  margin-bottom: 0;
+}
+
+.users-table thead th {
+  background-color: #f8f9fa;
+  border-bottom: 2px solid #e9ecef;
+  font-weight: 600;
+  font-size: 0.813rem;
+  color: #6c757d;
+  padding: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.users-table tbody td {
+  padding: 1rem;
+  border-bottom: 1px solid #f1f3f4;
+  vertical-align: middle;
+  font-size: 0.875rem;
+}
+
+/* Table Row Hover Effect */
+.table-row {
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.table-row:hover {
+  background-color: rgba(180, 76, 67, 0.04);
+  transform: translateX(2px);
+}
+
+/* Checkbox Styling */
+.checkbox-cell {
+  width: 50px;
+  padding-left: 1.5rem !important;
+}
+
+.table-checkbox {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.table-checkbox input[type="checkbox"] {
+  accent-color: #B44C43;
+  cursor: pointer;
+}
+
+/* User Info Section */
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.user-avatar {
+  border: 2px solid #e9ecef;
+  font-weight: 600;
+  background-color: #f8f9fa;
+  color: #B44C43;
+}
+
+.user-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.user-name {
+  font-weight: 600;
+  color: #1a1a1a;
+  font-size: 0.875rem;
+}
+
+.user-id {
+  font-size: 0.75rem;
+  color: #6c757d;
+}
+
+/* Contact Info */
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.contact-icon {
+  color: #6c757d;
+}
+
+.contact-text {
+  font-size: 0.813rem;
+  color: #495057;
+}
+
+/* Brand Name */
+.brand-name {
+  font-weight: 500;
+  color: #495057;
+}
+
+/* Badges */
+.badge {
+  font-weight: 500;
+  font-size: 0.75rem;
+  padding: 0.375rem 0.75rem;
+  letter-spacing: 0.025em;
+}
+
+/* Verification Badges */
+.verification-badges {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.verification-badge {
+  padding: 0.25rem 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 0.25rem;
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 0.375rem;
+}
+
+.action-btn {
+  background-color: transparent;
+  border: 1px solid #e9ecef;
+  color: #6c757d;
+  padding: 0.375rem;
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.375rem;
+  transition: all 0.2s ease;
+}
+
+.action-btn:hover {
+  background-color: #f8f9fa;
+  border-color: #B44C43;
+  color: #B44C43;
+  transform: scale(1.05);
+}
+
+.action-btn-danger:hover {
+  background-color: #fff5f5;
+  border-color: #dc3545;
+  color: #dc3545;
+}
+
+/* Status Badges Override */
+.badge.bg-success {
+  background-color: #d4edda !important;
+  color: #155724 !important;
+  border: 1px solid #c3e6cb;
+}
+
+.badge.bg-warning {
+  background-color: #fff3cd !important;
+  color: #856404 !important;
+  border: 1px solid #ffeaa7;
+}
+
+.badge.bg-danger {
+  background-color: #f8d7da !important;
+  color: #721c24 !important;
+  border: 1px solid #f5c6cb;
+}
+
+.badge.bg-info {
+  background-color: #d1ecf1 !important;
+  color: #0c5460 !important;
+  border: 1px solid #bee5eb;
+}
+
+.badge.bg-primary {
+  background-color: #cfe2ff !important;
+  color: #084298 !important;
+  border: 1px solid #b6d4fe;
+}
+
+/* Empty State Override */
+.users-card .empty-state {
+  padding: 4rem 2rem;
+}
+
+/* Loading State */
+.spinner-border {
+  width: 3rem;
+  height: 3rem;
+  border-width: 0.25rem;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .users-container {
+    padding: 1.5rem 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .users-header .d-flex {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: stretch !important;
+  }
+  
+  .users-title {
+    font-size: 1.5rem;
+  }
+  
+  .d-flex.gap-2 {
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  
+  .d-flex.gap-2 > * {
+    flex: 1;
+    min-width: 120px;
+  }
+  
+  .add-user-btn {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .users-table {
+    font-size: 0.75rem;
+  }
+  
+  .users-table thead th {
+    padding: 0.75rem 0.5rem;
+    font-size: 0.7rem;
+  }
+  
+  .users-table tbody td {
+    padding: 0.75rem 0.5rem;
+  }
+  
+  .user-info {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .contact-info {
+    font-size: 0.75rem;
+  }
+  
+  .action-buttons {
+    flex-wrap: wrap;
+  }
+  
+  .checkbox-cell {
+    padding-left: 0.75rem !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .users-container {
+    padding: 1rem 0.5rem;
+  }
+  
+  .filter-dropdown {
+    min-width: 100%;
+    right: 0 !important;
+    left: 0 !important;
+    margin: 0 0.5rem;
+  }
+  
+  /* Hide less important columns on mobile */
+  .users-table th:nth-child(7),
+  .users-table td:nth-child(7) {
+    display: none;
+  }
+  
+  .verification-badges {
+    gap: 0.25rem;
+  }
+  
+  .verification-badge {
+    padding: 0.125rem 0.25rem;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .users-header .d-flex.gap-2 {
+    display: none !important;
+  }
+  
+  .action-buttons {
+    display: none !important;
+  }
+  
+  .checkbox-cell {
+    display: none !important;
+  }
+  
+  .table-row:hover {
+    background-color: transparent;
+    transform: none;
+  }
+}
+
+/* Animation for table rows */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.table-row {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Custom scrollbar for table */
+.users-card {
+  overflow-x: auto;
+}
+
+.users-card::-webkit-scrollbar {
+  height: 8px;
+}
+
+.users-card::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.users-card::-webkit-scrollbar-thumb {
+  background: #B44C43;
+  border-radius: 4px;
+}
+
+.users-card::-webkit-scrollbar-thumb:hover {
+  background: #9a3f37;
 } 

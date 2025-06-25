@@ -1,0 +1,358 @@
+/* Edit Brand Modal Styles */
+
+.edit-brand-modal {
+  --brand-color: #B44C43;
+  --success-color: #28a745;
+  --danger-color: #dc3545;
+  --warning-color: #ffc107;
+  --light-gray: #f8f9fa;
+  --border-color: #e9ecef;
+  --text-color: #2c3e50;
+  --text-muted: #6c757d;
+}
+
+/* Modal Header */
+.modal-header-custom {
+  background: linear-gradient(135deg, var(--brand-color) 0%, #d85850 100%);
+  color: white;
+  border-bottom: none;
+  padding: 20px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-title-custom {
+  display: flex;
+  align-items: center;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.brand-status-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-name-small {
+  font-size: 0.875rem;
+  opacity: 0.9;
+  font-weight: 500;
+}
+
+.status-badge-small {
+  font-size: 0.75rem;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-weight: 600;
+}
+
+/* Modal Body */
+.modal-body-custom {
+  padding: 24px;
+  background: var(--light-gray);
+}
+
+/* Alert Styles */
+.success-alert,
+.error-alert {
+  border-radius: 8px;
+  border: none;
+  margin-bottom: 20px;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  animation: slideDown 0.3s ease;
+  font-size: 0.875rem;
+}
+
+.success-alert {
+  background: #d4edda;
+  color: #155724;
+}
+
+.error-alert {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Form Groups */
+.form-group-modal {
+  margin-bottom: 20px;
+}
+
+.form-label-modal {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  color: var(--text-color);
+  margin-bottom: 6px;
+  font-size: 0.875rem;
+}
+
+.form-label-modal.required::after {
+  content: '*';
+  color: var(--danger-color);
+  margin-left: 4px;
+}
+
+.form-input-modal {
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 10px 12px;
+  font-size: 0.875rem;
+  transition: all 0.2s ease;
+  background: white;
+}
+
+.form-input-modal:focus {
+  border-color: var(--brand-color);
+  box-shadow: 0 0 0 0.15rem rgba(180, 76, 67, 0.15);
+  outline: none;
+}
+
+.form-input-modal.is-invalid {
+  border-color: var(--danger-color);
+}
+
+.form-input-modal.is-invalid:focus {
+  border-color: var(--danger-color);
+  box-shadow: 0 0 0 0.15rem rgba(220, 53, 69, 0.15);
+}
+
+.form-input-modal:disabled {
+  background-color: #f8f9fa;
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.invalid-feedback {
+  display: block;
+  width: 100%;
+  margin-top: 4px;
+  font-size: 0.75rem;
+  color: var(--danger-color);
+}
+
+/* File Upload */
+.file-preview-modal {
+  margin-top: 8px;
+  padding: 8px 12px;
+  background: white;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  font-size: 0.75rem;
+  color: var(--text-color);
+}
+
+/* Modal Footer */
+.modal-footer-custom {
+  background: white;
+  border-top: 1px solid var(--border-color);
+  padding: 16px 24px;
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+.modal-button {
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  border: none;
+  min-width: 100px;
+  font-size: 0.875rem;
+}
+
+.modal-button.primary {
+  background: var(--brand-color);
+  color: white;
+}
+
+.modal-button.primary:hover:not(:disabled) {
+  background: #963a32;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(180, 76, 67, 0.3);
+}
+
+.modal-button.secondary {
+  border: 1px solid var(--border-color);
+  background: white;
+  color: var(--text-muted);
+}
+
+.modal-button.secondary:hover:not(:disabled) {
+  background: var(--light-gray);
+  border-color: var(--brand-color);
+  color: var(--brand-color);
+}
+
+.modal-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+/* Modal Backdrop */
+.edit-brand-modal .modal-backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
+}
+
+/* Modal Dialog */
+.edit-brand-modal .modal-dialog {
+  margin: 2rem auto;
+  max-width: 800px;
+}
+
+.edit-brand-modal .modal-content {
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+}
+
+/* Close Button Override */
+.edit-brand-modal .modal-header .btn-close {
+  color: white;
+  opacity: 0.8;
+  filter: invert(1);
+}
+
+.edit-brand-modal .modal-header .btn-close:hover {
+  opacity: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .edit-brand-modal .modal-dialog {
+    margin: 1rem;
+    max-width: none;
+  }
+
+  .modal-header-custom {
+    padding: 16px 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .brand-status-info {
+    align-self: flex-end;
+  }
+
+  .modal-body-custom {
+    padding: 20px;
+  }
+
+  .modal-footer-custom {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .modal-button {
+    width: 100%;
+  }
+
+  .form-group-modal {
+    margin-bottom: 16px;
+  }
+}
+
+/* Loading Spinner */
+.modal-button .spinner-border-sm {
+  width: 0.875rem;
+  height: 0.875rem;
+}
+
+/* Hover Effects */
+.form-input-modal:hover:not(:focus):not(:disabled) {
+  border-color: var(--brand-color);
+}
+
+.form-group-modal:hover .form-label-modal {
+  color: var(--brand-color);
+}
+
+/* Focus States for Accessibility */
+.form-input-modal:focus,
+.modal-button:focus {
+  outline: 2px solid var(--brand-color);
+  outline-offset: 2px;
+}
+
+/* Animation for Modal */
+.edit-brand-modal.show .modal-dialog {
+  animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Status Badge Colors */
+.status-badge-small.badge-success {
+  background: var(--success-color) !important;
+}
+
+.status-badge-small.badge-warning {
+  background: var(--warning-color) !important;
+  color: #212529 !important;
+}
+
+.status-badge-small.badge-danger {
+  background: var(--danger-color) !important;
+}
+
+/* Input Group Text */
+.form-input-modal + .input-group-text {
+  border-color: var(--border-color);
+  background: white;
+  color: var(--text-muted);
+}
+
+/* Tooltip Styling */
+.tooltip .tooltip-inner {
+  background-color: var(--text-color);
+  color: white;
+  font-size: 0.75rem;
+}
+
+/* Form Row Spacing */
+.modal-body-custom .row {
+  margin: 0;
+}
+
+.modal-body-custom .col-md-6 {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+/* Success Badge in File Preview */
+.file-preview-modal .badge-success {
+  background: var(--success-color) !important;
+  color: white !important;
+} 

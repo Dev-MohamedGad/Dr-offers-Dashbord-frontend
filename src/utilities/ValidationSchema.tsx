@@ -14,6 +14,11 @@ export const SignInSchema = yup.object({
 });
 
 export const CreateUserSchema = yup.object().shape({
+  email: yup
+    .string()
+    .email('Please enter a valid email')
+    .required('Email is required'),
+  name: yup.string().required('Name is required'),
   password: yup
     .string()
     .required('Password is required')
@@ -22,36 +27,41 @@ export const CreateUserSchema = yup.object().shape({
       /[!@#$%^&*(),.?":{}|<>]/,
       'Password must contain at least one special character'
     )
-    .matches(/.{8,}/, 'Password must be at least 8 characters long'),
-  email: yup
+    .min(8, 'Password must be at least 8 characters long'),
+  address: yup.string().required('Address is required'),
+  facebook_url: yup
     .string()
-    .email('Please enter a valid email')
-    .required('Email is required'),
-  name: yup.string().required('Name is required'),
-  gender: yup
+    .url('Please enter a valid Facebook URL')
+    .required('Facebook URL is required'),
+  instagram_url: yup
     .string()
-    .oneOf(['male', 'female'], 'Invalid gender')
-    .required('Gender is required'),
+    .url('Please enter a valid Instagram URL')
+    .required('Instagram URL is required'),
+  linkedin_url: yup
+    .string()
+    .url('Please enter a valid LinkedIn URL')
+    .required('LinkedIn URL is required'),
+  whatsapp_number: yup
+    .string()
+    .required('WhatsApp number is required')
+    .matches(/^[+]?[0-9\s\-()]+$/, 'Please enter a valid WhatsApp number'),
   phone_number: yup
     .string()
     .required('Phone number is required')
-    .min(8, 'Phone number must be at least 8 characters long')
-    .max(20, 'Phone number must be at most 20 characters long'),
-  secondary_email: yup.string().email('Please enter a valid email'),
-  image_url: yup.string().required('Image URL is required'),
-  country: yup.string(),
-  birth_date: yup
+    .matches(/^[+]?[0-9\s\-()]+$/, 'Please enter a valid phone number'),
+  image_url: yup
     .string()
-    .matches(
-      /^\d{4}-\d{2}-\d{2}$/,
-      'Birth date must be a valid ISO 8601 date string (YYYY-MM-DD)'
-    )
-    .required('Birth date is required'),
-  job_title: yup.string(),
-  role: yup.string().oneOf(['customer', 'admin'], 'Invalid role'),
+    .url('Please enter a valid image URL')
+    .optional(),
+  role: yup
+    .string()
+    .oneOf(['visitor', 'admin', 'owner'], 'Invalid role')
+    .required('Role is required'),
 });
 
 export const EditUserSchema = yup.object().shape({
+  email: yup.string().email('Please enter a valid email').optional(),
+  name: yup.string().optional(),
   password: yup
     .string()
     .optional()
@@ -60,21 +70,39 @@ export const EditUserSchema = yup.object().shape({
       /[!@#$%^&*(),.?":{}|<>]/,
       'Password must contain at least one special character'
     )
-    .matches(/.{8,}/, 'Password must be at least 8 characters long'),
-  email: yup.string().email('Please enter a valid email').optional(),
-  name: yup.string().optional(),
-  gender: yup.string().oneOf(['male', 'female'], 'Invalid gender').optional(),
+    .min(8, 'Password must be at least 8 characters long'),
+  address: yup.string().optional(),
   phone_number: yup
     .string()
-    .optional()
-    .min(8, 'Phone number must be at least 8 characters long')
-    .max(20, 'Phone number must be at most 20 characters long'),
-  secondary_email: yup.string().email('Please enter a valid email').optional(),
-  image_url: yup.string().optional(),
-  country: yup.string().optional(),
-  birth_date: yup.date().optional(),
-  job_title: yup.string().optional(),
-  role: yup.string().oneOf(['customer', 'admin'], 'Invalid role').optional(),
+    .matches(/^[+]?[0-9\s\-()]+$/, 'Please enter a valid phone number')
+    .optional(),
+  whatsapp_number: yup
+    .string()
+    .matches(/^[+]?[0-9\s\-()]+$/, 'Please enter a valid WhatsApp number')
+    .optional(),
+  facebook_url: yup
+    .string()
+    .url('Please enter a valid Facebook URL')
+    .optional(),
+  instagram_url: yup
+    .string()
+    .url('Please enter a valid Instagram URL')
+    .optional(),
+  linkedin_url: yup
+    .string()
+    .url('Please enter a valid LinkedIn URL')
+    .optional(),
+  image_url: yup
+    .string()
+    .url('Please enter a valid image URL')
+    .optional(),
+  role: yup
+    .string()
+    .oneOf(['visitor', 'admin', 'owner'], 'Invalid role')
+    .optional(),
+  is_phone_verified: yup.boolean().optional(),
+  is_email_verified: yup.boolean().optional(),
+  is_active: yup.boolean().optional(),
 });
 
 export const EditAndCreateProfessionalSchema = yup.object().shape({
@@ -404,7 +432,6 @@ export const CreateBookingSchema = yup.object().shape({
   property_id: yup.string().required('Property is required'),
   customer_id: yup.string().required('Customer is required'),
 });
-
 
 export const NewsletterSchema = yup.object().shape({
   email: yup.string().email('Invalid email').required('Email is required'),

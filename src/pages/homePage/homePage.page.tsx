@@ -15,6 +15,7 @@ import {
   CTableHeaderCell,
   CTableBody,
   CTableDataCell,
+  CSpinner,
 } from '@coreui/react-pro';
 import CIcon from '@coreui/icons-react';
 import { 
@@ -50,6 +51,7 @@ import {
   ArcElement
 } from 'chart.js';
 import { Line, Bar, Doughnut } from 'react-chartjs-2';
+import { useGetAllBrandsQuery } from '@redux/slices/brandsSlice/brandsApiSlice';
 import './homePage.styles.css';
 
 ChartJS.register(
@@ -66,23 +68,27 @@ ChartJS.register(
 );
 
 function HomePage() {
+  // Fetch brands data from API
+  const { data: brandsResponse, isLoading: brandsLoading, error: brandsError } = useGetAllBrandsQuery({});
+  
+  // Extract brands data and handle loading/error states
+  const brandsData = brandsResponse?.data?.data || [];
+  
   // Dashboard metrics matching the image
   const metrics = {
     views: { value: '721K', change: '+11.01%', trend: 'up' },
     visits: { value: '367K', change: '-0.03%', trend: 'down' },
-    activeBrands: { value: '156', change: '+15.03%', trend: 'up' },
+    activeBrands: { value: brandsData.filter(brand => brand.status === 'active').length.toString(), change: '+15.03%', trend: 'up' },
     activeUsers: { value: '2K', change: '+6.08%', trend: 'up' }
   };
 
-  // Brands list matching the image exactly
-  const brandsData = [
-    { id: 1, name: 'Brand 1', status: 'Active', color: 'success' },
-    { id: 2, name: 'Brand 2', status: 'Pending', color: 'secondary' },
-    { id: 3, name: 'Brand 3', status: 'Pending', color: 'secondary' },
-    { id: 4, name: 'Brand 3', status: 'Active', color: 'success' },
-    { id: 5, name: 'Brand 4', status: 'Active', color: 'success' },
-    { id: 6, name: 'Brand 5', status: 'Wait', color: 'warning' },
-  ];
+  // Transform API data to match component expectations
+  const transformedBrandsData = brandsData.slice(0, 5).map(brand => ({
+    id: brand.id,
+    name: brand.brand_name,
+    status: brand.status === 'active' ? 'Active' : brand.status === 'pending' ? 'Pending' : 'Rejected',
+    color: brand.status === 'active' ? 'success' : brand.status === 'pending' ? 'secondary' : 'danger'
+  }));
 
   // Default SVG for brand placeholders
   const DefaultBrandIcon = () => (
@@ -507,22 +513,37 @@ function HomePage() {
             </div>
             
             <div className="brands-list">
-              {brandsData.map((brand) => (
-                <div key={brand.id} className="brand-item">
-                  <div className="d-flex align-items-center">
-                    <div className="brand-icon">
-                      <div className="brand-avatar-img">
-                        <DefaultBrandIcon />
-                      </div>
-                    </div>
-                    <span className="brand-name">{brand.name}</span>
-                  </div>
-                  <div className="brand-status">
-                    <div className={`status-dot ${brand.status.toLowerCase()}`}></div>
-                    <span className={`status-text ${brand.status.toLowerCase()}`}>{brand.status}</span>
-                  </div>
+              {brandsLoading ? (
+                <div className="text-center py-3">
+                  <CSpinner size="sm" />
+                  <div className="mt-2 text-muted">Loading brands...</div>
                 </div>
-              ))}
+              ) : brandsError ? (
+                <div className="text-center py-3 text-danger">
+                  <small>Error loading brands</small>
+                </div>
+              ) : transformedBrandsData.length === 0 ? (
+                <div className="text-center py-3 text-muted">
+                  <small>No brands found</small>
+                </div>
+              ) : (
+                transformedBrandsData.map((brand) => (
+                  <div key={brand.id} className="brand-item">
+                    <div className="d-flex align-items-center">
+                      <div className="brand-icon">
+                        <div className="brand-avatar-img">
+                          <DefaultBrandIcon />
+                        </div>
+                      </div>
+                      <span className="brand-name">{brand.name}</span>
+                    </div>
+                    <div className="brand-status">
+                      <div className={`status-dot ${brand.status.toLowerCase()}`}></div>
+                      <span className={`status-text ${brand.status.toLowerCase()}`}>{brand.status}</span>
+                    </div>
+                  </div>
+                ))
+              )}
             </div>
           </CCard>
         </CCol>

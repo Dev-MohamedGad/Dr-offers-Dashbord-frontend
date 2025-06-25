@@ -15,8 +15,10 @@ const UserDetails = React.lazy(() => import('@pages/usersPage/userDetails'));
 // Activating the new components
 const BrandsPage = React.lazy(() => import('@pages/brandsPage/brandsPage.page'));
 const BrandDetails = React.lazy(() => import('@pages/brandsPage/brandDetails'));
+const EditBrandForm = React.lazy(() => import('@pages/brandsPage/editBrandForm'));
 const OffersPage = React.lazy(() => import('@pages/offersPage/offersPage.page'));
 const OfferDetails = React.lazy(() => import('@pages/offersPage/offerDetails'));
+const AddOfferPage = React.lazy(() => import('@pages/addOfferPage/addOfferPage.page'));
 
 const routes: Route[] = [
   {
@@ -30,14 +32,24 @@ const routes: Route[] = [
     element: BrandsPage,
   },
   {
-    path: '/brand/:id',
+    path: '/brands/:id',
     name: 'Brand Details',
     element: BrandDetails,
+  },
+  {
+    path: '/brands/:id/edit',
+    name: 'Edit Brand',
+    element: EditBrandForm,
   },
   {
     path: '/offers',
     name: 'Offers',
     element: OffersPage,
+  },
+  {
+    path: '/add-offer',
+    name: 'Add Offer',
+    element: AddOfferPage,
   },
   {
     path: '/offer/:id',

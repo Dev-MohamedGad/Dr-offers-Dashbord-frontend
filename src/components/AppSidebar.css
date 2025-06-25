@@ -1,0 +1,83 @@
+/* Custom Sidebar Styling to match the design */
+.custom-sidebar {
+  background: #f5f5f5 !important;
+  border-right: 1px solid #e0e0e0 !important;
+  width: 250px !important;
+  box-shadow: none !important;
+}
+
+.custom-sidebar-header {
+  background: #f5f5f5 !important;
+  border-bottom: 1px solid #e0e0e0 !important;
+  padding: 1rem !important;
+}
+
+.custom-brand {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.sidebar-brand-full {
+  height: 40px;
+  width: auto;
+}
+
+/* Navigation Items Styling */
+.sidebar .sidebar-nav .nav-link {
+  color: #666 !important;
+  padding: 0.75rem 1rem !important;
+  margin: 0.25rem 0 !important;
+  border-radius: 8px !important;
+  transition: all 0.2s ease !important;
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.sidebar .sidebar-nav .nav-link:hover {
+  background: rgba(180, 76, 67, 0.1) !important;
+  color: #B44C43 !important;
+}
+
+.sidebar .sidebar-nav .nav-link.active {
+  background: #B44C43 !important;
+  color: white !important;
+}
+
+/* Only active items get background color change */
+
+/* Icon Styling */
+.sidebar .sidebar-nav .nav-icon {
+  margin-right: 0.75rem !important;
+  width: 20px !important;
+  height: 20px !important;
+  flex-shrink: 0;
+}
+
+/* Remove default CoreUI styling */
+.sidebar .sidebar-nav {
+  padding: 1rem !important;
+}
+
+.sidebar .sidebar-nav .nav-item {
+  margin-bottom: 0.25rem;
+}
+
+/* Override CoreUI dark theme */
+.sidebar-light .sidebar-nav .nav-link {
+  color: #666 !important;
+}
+
+.sidebar-light .sidebar-nav .nav-link:hover {
+  background: rgba(180, 76, 67, 0.1) !important;
+  color: #B44C43 !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .custom-sidebar {
+    width: 100% !important;
+  }
+} 

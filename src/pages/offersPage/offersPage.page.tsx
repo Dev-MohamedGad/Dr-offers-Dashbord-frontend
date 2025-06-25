@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   CButton,
   CCard,
@@ -276,6 +277,7 @@ const offersData = [
 ];
 
 const OffersPage: React.FC = () => {
+  const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState('All Status');
   const [categoryFilter, setCategoryFilter] = useState('All Categories');
@@ -352,7 +354,10 @@ const OffersPage: React.FC = () => {
             <p className="text-muted">Create, manage and track all promotional offers</p>
           </div>
           <div className="d-flex gap-2">
-            <CButton color="success">
+            <CButton 
+              color="success"
+              onClick={() => navigate('/add-offer')}
+            >
               <CIcon icon={cilPlus} className="me-2" />
               Create Offer
             </CButton>
