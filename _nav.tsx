@@ -41,6 +41,7 @@ const _nav: NavItem[] = [
     name: 'Brands',
     to: '/brands',
     icon: <CIcon icon={cilGrid} customClassName="nav-icon" />,
+    roles: ['admin'], // Only visible to admin role (hidden from owner)
   },
   {
     component: CNavItem,
@@ -55,18 +56,13 @@ const _nav: NavItem[] = [
     icon: <CIcon icon={cilApplications} customClassName="nav-icon" />,
     roles: ['owner'], // Only visible to owner role
   },
-  {
-    component: CNavItem,
-    name: 'Add Offer',
-    to: '/add-offer',
-    icon: <CIcon icon={cilPlus} customClassName="nav-icon" />,
-    roles: ['owner'], // Only visible to owner role
-  },
+
   {
     component: CNavItem,
     name: 'Users',
     to: '/users',
     icon: <CIcon icon={cilPeople} customClassName="nav-icon" />,
+    roles: ['admin'], // Only visible to admin role (hidden from owner)
   },
 ];
 

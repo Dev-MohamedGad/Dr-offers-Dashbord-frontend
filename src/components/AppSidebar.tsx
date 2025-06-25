@@ -43,7 +43,7 @@ const AppSidebar = () => {
           <img 
             src="/dr-offer-logo.png" 
             alt="Dr.Offers"
-            className="sidebar-brand-full"
+            className="sidebar-brand-full "
           />
         </CSidebarBrand>
         <CCloseButton

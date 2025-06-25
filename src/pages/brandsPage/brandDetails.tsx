@@ -316,10 +316,7 @@ const BrandDetails: React.FC = () => {
                 <CIcon icon={cilChartLine} className="header-icon" />
                 <h5 className="header-title">Performance Analytics</h5>
               </div>
-              <CButton color="light" size="sm" className="export-button">
-                <CIcon icon={cilCloudDownload} className="me-2" />
-                Export
-              </CButton>
+           
             </CCardHeader>
             <CCardBody className="card-body-custom">
               <div className="analytics-content">

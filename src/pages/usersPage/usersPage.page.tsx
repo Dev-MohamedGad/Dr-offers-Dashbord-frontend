@@ -79,6 +79,13 @@ const UsersPage = () => {
     role: 'All',
     verified: 'All'
   });
+
+  // Utility function for ripple effect
+  const addRippleEffect = (e: React.MouseEvent<HTMLElement>) => {
+    const element = e.currentTarget;
+    element.classList.add('ripple');
+    setTimeout(() => element.classList.remove('ripple'), 600);
+  };
   
   const { data: response, isLoading, error, refetch } = useUsersListQuery({
     page,
@@ -386,13 +393,7 @@ const UsersPage = () => {
             <CTable hover responsive className="users-table mb-0">
               <CTableHead>
                 <CTableRow>
-                  <CTableHeaderCell className="checkbox-cell">
-                    <CFormCheck 
-                      checked={selectAll}
-                      onChange={(e) => handleSelectAll(e.target.checked)}
-                      className="table-checkbox"
-                    />
-                  </CTableHeaderCell>
+               
                   <CTableHeaderCell>User</CTableHeaderCell>
                   <CTableHeaderCell>Contact</CTableHeaderCell>
                   <CTableHeaderCell>Brand</CTableHeaderCell>
@@ -409,24 +410,12 @@ const UsersPage = () => {
                     className="table-row"
                     onClick={() => navigate(`/user/${user.id}`)}
                   >
-                    <CTableDataCell className="checkbox-cell" onClick={(e) => e.stopPropagation()}>
-                      <CFormCheck 
-                        checked={user.selected || false}
-                        onChange={(e) => handleSelectUser(user.id, e.target.checked)}
-                        className="table-checkbox"
-                      />
-                    </CTableDataCell>
+                 
                     <CTableDataCell>
                       <div className="user-info">
-                        <CAvatar 
-                          src={user.image_url} 
-                          size="md"
-                          className="user-avatar"
-                        >
-                          {!user.image_url && (user.name ? user.name.charAt(0).toUpperCase() : 'U')}
-                        </CAvatar>
+                       
                         <div className="user-details">
-                          <div className="user-name">{user.name}</div>
+                          <div className="user-name text-truncate">{user.name}</div>
                           <div className="user-id">ID: {user.id}</div>
                         </div>
                       </div>
@@ -486,36 +475,39 @@ const UsersPage = () => {
                     </CTableDataCell>
                     <CTableDataCell className="text-center" onClick={(e) => e.stopPropagation()}>
                       <div className="action-buttons">
-                        <CTooltip content="Edit User">
+                        <CTooltip content="Edit User" placement="top">
                           <CButton 
                             size="sm" 
-                            className="action-btn"
+                            className="action-btn action-btn-edit"
                             onClick={(e) => {
                               e.stopPropagation();
+                              addRippleEffect(e);
                               editItem(user);
                             }}
                           >
                             <CIcon icon={cilPencil} size="sm" />
                           </CButton>
                         </CTooltip>
-                        <CTooltip content="Delete User">
+                        <CTooltip content="Delete User" placement="top">
                           <CButton 
                             size="sm" 
-                            className="action-btn action-btn-danger"
+                            className="action-btn action-btn-delete"
                             onClick={(e) => {
                               e.stopPropagation();
+                              addRippleEffect(e);
                               deleteItem(user);
                             }}
                           >
                             <CIcon icon={cilTrash} size="sm" />
                           </CButton>
                         </CTooltip>
-                        <CTooltip content="View Details">
+                        <CTooltip content="View Details" placement="top">
                           <CButton 
                             size="sm" 
-                            className="action-btn"
+                            className="action-btn action-btn-view"
                             onClick={(e) => {
                               e.stopPropagation();
+                              addRippleEffect(e);
                               navigate(`/user/${user.id}`);
                             }}
                           >

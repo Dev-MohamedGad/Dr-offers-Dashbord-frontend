@@ -19,8 +19,9 @@
 }
 
 .sidebar-brand-full {
-  height: 40px;
-  width: auto;
+  height: 150px;
+  width: 150px;
+  object-fit: contain;
 }
 
 /* Navigation Items Styling */

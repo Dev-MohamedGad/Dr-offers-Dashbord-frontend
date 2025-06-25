@@ -52,7 +52,7 @@ export const CreateUserSchema = yup.object().shape({
   image_url: yup
     .string()
     .url('Please enter a valid image URL')
-    .optional(),
+    .required('Image URL is required'),
   role: yup
     .string()
     .oneOf(['visitor', 'admin', 'owner'], 'Invalid role')

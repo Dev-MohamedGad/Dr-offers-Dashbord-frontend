@@ -156,10 +156,7 @@ const UserDetails = () => {
               </CButton>
               <h1 className="h3 mb-0 text-primary fw-semibold">User Profile</h1>
             </div>
-            <CButton color="primary" variant="outline" size="sm">
-              <CIcon icon={cilPencil} className="me-1" />
-              Edit
-            </CButton>
+           
           </div>
         </CCol>
       </CRow>

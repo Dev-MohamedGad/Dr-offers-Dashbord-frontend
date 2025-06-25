@@ -95,9 +95,9 @@ const getCategoryLabel = (category: CategoryType): string => {
 const categoryOptions = Object.values(CategoryType);
 
 const planOptions = [
-  'Free',
-  'Custom', 
-  'Other',
+  'free',
+  'custom', 
+  'other',
 ];
 
 const statusOptions = [

@@ -10,7 +10,7 @@ import routes from '../routes/routes'
 
 const AppContent = () => {
   return (
-    <CContainer lg className="px-4">
+    <CContainer >
       <AppBreadcrumb />
       <Suspense fallback={<CSpinner color="primary" />}>
         <Routes>

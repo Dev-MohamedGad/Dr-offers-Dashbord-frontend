@@ -31,7 +31,7 @@ import {
   cilSettings,
   cilCloudUpload,
   cilCheckCircle,
-  cilExclamationTriangle,
+  cilWarning,
 } from '@coreui/icons';
 import { useGetBrandDetailsQuery, useUpdateBrandMutation, UpdateBrandRequest } from '../../redux/slices/brandsSlice';
 import './editBrandForm.css';
@@ -106,7 +106,6 @@ const EditBrandForm: React.FC = () => {
     error 
   } = useGetBrandDetailsQuery({ 
     id: Number(id), 
-    track_view: false 
   });
   
   const [updateBrand] = useUpdateBrandMutation();
@@ -154,7 +153,7 @@ const EditBrandForm: React.FC = () => {
     setFormData(prev => ({ ...prev, [field]: value }));
     
     // Clear error when user starts typing
-    if (errors[field]) {
+    if (errors[field as keyof FormErrors]) {
       setErrors(prev => ({ ...prev, [field]: undefined }));
     }
   };
@@ -248,7 +247,7 @@ const EditBrandForm: React.FC = () => {
     return (
       <CContainer fluid className="px-4">
         <div className="error-state">
-          <CIcon icon={cilExclamationTriangle} size="3xl" className="error-icon" />
+          <CIcon icon={cilWarning} size="3xl" className="error-icon" />
           <h5 className="error-title">Unable to Load Brand</h5>
           <p className="error-message">
             {error && 'data' in error ? error.data as string : 'Brand not found or an error occurred'}
@@ -306,7 +305,7 @@ const EditBrandForm: React.FC = () => {
       {/* Error Alert */}
       {errors.general && (
         <CAlert color="danger" className="error-alert">
-          <CIcon icon={cilExclamationTriangle} className="me-2" />
+          <CIcon icon={cilWarning} className="me-2" />
           {errors.general}
         </CAlert>
       )}

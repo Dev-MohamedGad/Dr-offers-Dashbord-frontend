@@ -1,16 +1,16 @@
 import TextError from '@components/Forms/TextError';
-import { 
+import {
   cilUser, 
   cilLockLocked, 
   cilEnvelopeLetter, 
   cilPhone,
   cilLocationPin,
-  cilBuilding,
-  cilCheckCircle,
   cilGlobeAlt,
   cilLink,
   cilCamera,
-  cilCloudUpload
+  cilCloudUpload,
+  cilWarning,
+  cilCheckCircle
 } from '@coreui/icons';
 import CIcon from '@coreui/icons-react';
 import {
@@ -29,6 +29,7 @@ import {
   CRow,
   CCol,
   CSpinner,
+  CAlert,
 } from '@coreui/react-pro';
 import { useUpdateUserApiSliceMutation, useUpdateUserImageMutation } from '@redux/slices/usersSlice/usersApiSlice';
 import { EditUserSchema } from '@utils/ValidationSchema';
@@ -53,6 +54,8 @@ const EditAndCreateUserForm = ({
   const [uploading, setUploading] = useState(false);
   const [imagePreview, setImagePreview] = useState<string>(selectedItem?.image_url || '');
   const [uploadedImageUrl, setUploadedImageUrl] = useState<string>('');
+  const [errors, setErrors] = useState<FormErrors>({});
+  const [showSuccess, setShowSuccess] = useState(false);
   const token = useSelector((state: any) => state.auth.accessToken);
 
   const initialValues = {
@@ -83,6 +86,21 @@ const EditAndCreateUserForm = ({
     role: string;
   };
 
+  interface FormErrors {
+    email?: string;
+    name?: string;
+    password?: string;
+    address?: string;
+    facebook_url?: string;
+    instagram_url?: string;
+    linkedin_url?: string;
+    whatsapp_number?: string;
+    phone_number?: string;
+    image_url?: string;
+    role?: string;
+    general?: string;
+  }
+
   const handleImageUpload = async (
     e: React.ChangeEvent<HTMLInputElement>,
     setFieldValue: (field: string, value: any) => void
@@ -92,17 +110,18 @@ const EditAndCreateUserForm = ({
 
     // Validate file type
     if (!file.type.startsWith('image/')) {
-      Swal.fire('Error', 'Please select a valid image file', 'error');
+      setErrors(prev => ({ ...prev, general: 'Please select a valid image file' }));
       return;
     }
 
     // Validate file size (max 5MB)
     if (file.size > 5 * 1024 * 1024) {
-      Swal.fire('Error', 'Image size should be less than 5MB', 'error');
+      setErrors(prev => ({ ...prev, general: 'Image size should be less than 5MB' }));
       return;
     }
 
     setUploading(true);
+    setErrors({}); // Clear any previous errors
     
     try {
       // Step 1: Get signed URL from users endpoint
@@ -142,11 +161,7 @@ const EditAndCreateUserForm = ({
 
     } catch (error: any) {
       console.error('Error uploading image:', error);
-      Swal.fire({
-        icon: 'error',
-        title: 'Upload Error',
-        text: error.message || 'Failed to upload image. Please try again.',
-      });
+      setErrors(prev => ({ ...prev, general: error.message || 'Failed to upload image. Please try again.' }));
     } finally {
       setUploading(false);
     }
@@ -154,6 +169,8 @@ const EditAndCreateUserForm = ({
 
   const onSubmit = async (values: FormTypes) => {
     const id = selectedItem?.id;
+    setErrors({}); // Clear any previous errors
+    
     if (modalType === 'create') {
       // Use uploaded image URL if available, otherwise use the form value
       const finalImageUrl = uploadedImageUrl || values.image_url;
@@ -177,21 +194,14 @@ const EditAndCreateUserForm = ({
         }
         await action(body).unwrap();
         setVisible?.(false);
-        Swal.fire({
-          icon: 'success',
-          title: 'Success!',
-          text: 'User created successfully',
-          timer: 1500,
-          showConfirmButton: false
-        });
-      } catch (err) {
+        setShowSuccess(true);
+        setTimeout(() => {
+          setShowSuccess(false);
+        }, 2000);
+      } catch (err: any) {
         console.error('Error creating user:', err);
-        Swal.fire({
-          icon: 'error',
-          title: 'Error',
-          text: err instanceof Error ? err.message : 'Failed to create user. Please try again.',
-          confirmButtonText: 'OK'
-        });
+        const errorMsg = err?.data?.message || err?.message || 'Failed to create user. Please try again.';
+        setErrors(prev => ({ ...prev, general: errorMsg }));
       }
     } else {
       const finalImageUrl = uploadedImageUrl || values.image_url;
@@ -216,21 +226,14 @@ const EditAndCreateUserForm = ({
         }
         await updateUserApiSlice({ id, body }).unwrap();
         setVisible?.(false);
-        Swal.fire({
-          icon: 'success',
-          title: 'Success!',
-          text: 'User updated successfully',
-          timer: 1500,
-          showConfirmButton: false
-        });
-      } catch (err) {
+        setShowSuccess(true);
+        setTimeout(() => {
+          setShowSuccess(false);
+        }, 2000);
+      } catch (err: any) {
         console.error('Error updating user:', err);
-        Swal.fire({
-          icon: 'error',
-          title: 'Error',
-          text: err instanceof Error ? err.message : 'Failed to update user. Please try again.',
-          confirmButtonText: 'OK'
-        });
+        const errorMsg = err?.data?.message || err?.message || 'Failed to update user. Please try again.';
+        setErrors(prev => ({ ...prev, general: errorMsg }));
       }
     }
   };
@@ -246,6 +249,22 @@ const EditAndCreateUserForm = ({
         <CModalTitle id="EditAndCreateUserForm">{modalTitle}</CModalTitle>
       </CModalHeader>
       <CModalBody>
+        {/* Success Alert */}
+        {showSuccess && (
+          <CAlert color="success" className="mb-4">
+            <CIcon icon={cilCheckCircle} className="me-2" />
+            {modalType === 'create' ? 'User created successfully!' : 'User updated successfully!'}
+          </CAlert>
+        )}
+
+        {/* Error Alert */}
+        {errors.general && (
+          <CAlert color="danger" className="mb-4">
+            <CIcon icon={cilWarning} className="me-2" />
+            {errors.general}
+          </CAlert>
+        )}
+        
         <Formik
           validationSchema={
             modalType === 'create' ? CreateUserSchema : EditUserSchema
