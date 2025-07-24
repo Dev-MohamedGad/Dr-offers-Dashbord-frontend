@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux';
+import { hasPermission, isAdmin } from '../../types/user-roles.type';
 import {
   CButton,
   CCard,
@@ -281,6 +284,15 @@ const OffersPage: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState('All Status');
   const [categoryFilter, setCategoryFilter] = useState('All Categories');
+  
+  // Get current user from Redux state
+  const currentUser = useSelector((state: RootState) => state.user.currentUser);
+  
+  // Check if current user can approve offers
+  const canApproveOffers = currentUser && (
+    isAdmin(currentUser.role as any) || 
+    hasPermission(currentUser.role as any, 'offers', 'approve')
+  );
 
   const filteredOffers = offersData.filter(offer => {
     const matchesSearch = offer.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -343,6 +355,17 @@ const OffersPage: React.FC = () => {
     active: offersData.filter(o => o.status === 'Active').length,
     pending: offersData.filter(o => o.status === 'Pending').length,
     totalRedemptions: offersData.reduce((sum, o) => sum + o.currentRedemptions, 0)
+  };
+
+  const handleApproveOffer = (offerId: number) => {
+    // For now, just show an alert. In a real app, this would call an API
+    // TODO: Implement actual API call to approve the offer
+    alert(`Offer ${offerId} has been approved!`);
+    
+    // In a real implementation, you would:
+    // 1. Call an API to update the offer status
+    // 2. Update the local state or refetch data
+    // 3. Show a success notification
   };
 
   return (
@@ -539,7 +562,7 @@ const OffersPage: React.FC = () => {
                       <div className="fw-bold text-primary">{offer.analytics.conversionRate}% CVR</div>
                     </div>
                   </CTableDataCell>
-                  <CTableDataCell>
+                                    <CTableDataCell>
                     <CButtonGroup size="sm">
                       <CButton color="primary" variant="ghost" size="sm">
                         <CIcon icon={cilEye} />
@@ -547,6 +570,17 @@ const OffersPage: React.FC = () => {
                       <CButton color="warning" variant="ghost" size="sm">
                         <CIcon icon={cilPencil} />
                       </CButton>
+                      {canApproveOffers && offer.status === 'Pending' && (
+                        <CButton 
+                          color="success" 
+                          variant="ghost" 
+                          size="sm" 
+                          onClick={() => handleApproveOffer(offer.id)}
+                          title="Approve Offer"
+                        >
+                          <CIcon icon={cilCheckCircle} />
+                        </CButton>
+                      )}
                       <CButton color="info" variant="ghost" size="sm">
                         <CIcon icon={cilShare} />
                       </CButton>
