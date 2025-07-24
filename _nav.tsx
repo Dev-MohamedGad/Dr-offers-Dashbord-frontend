@@ -6,10 +6,7 @@ import {
   cilTag,
   cilGrid,
   cilApplications,
-  cilDescription,
-  cilPlus,
-  cilSettings,
-  cilUser,
+ 
 } from '@coreui/icons';
 import { CNavItem } from '@coreui/react-pro';
 
@@ -49,6 +46,8 @@ const _nav: NavItem[] = [
     to: '/offers',
     icon: <CIcon icon={cilTag} customClassName="nav-icon" />,
   },
+ 
+
   {
     component: CNavItem,
     name: 'Templates',

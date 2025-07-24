@@ -1,0 +1,484 @@
+.brands-header {
+  margin-bottom: 2rem;
+}
+
+.brands-title {
+  color: #1a1a1a;
+  font-weight: 600;
+  font-size: 1.75rem;
+  margin-bottom: 0;
+}
+
+.brands-page {
+  background-color: #f8f9fa;
+  min-height: 100vh;
+}
+
+/* Table Styling */
+.table {
+  --cui-table-striped-bg: transparent;
+  --cui-table-hover-bg: rgba(0, 0, 0, 0.02);
+}
+
+.table thead th {
+  background-color: #f8f9fa !important;
+  border-bottom: 1px solid #e9ecef;
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: #6c757d;
+  padding: 1rem 0.75rem;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.table tbody td {
+  padding: 1rem 0.75rem;
+  border-bottom: 1px solid #f1f3f4;
+  vertical-align: middle;
+  font-size: 0.875rem;
+}
+
+.table tbody tr:hover {
+  background-color: rgba(0, 123, 255, 0.02) !important;
+}
+
+/* Clickable Row Styling */
+.clickable-row {
+  transition: all 0.2s ease;
+}
+
+.clickable-row:hover {
+  background-color: rgba(180, 76, 67, 0.05) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.clickable-row:active {
+  transform: translateY(0);
+}
+
+/* Badge Styling */
+.badge {
+  font-weight: 500;
+  font-size: 0.75rem;
+  padding: 0.375rem 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.badge.bg-success {
+  background-color: #d4edda !important;
+  color: #155724 !important;
+  border: 1px solid #c3e6cb;
+}
+
+.badge.bg-warning {
+  background-color: #fff3cd !important;
+  color: #856404 !important;
+  border: 1px solid #ffeaa7;
+}
+
+.badge.bg-danger {
+  background-color: #f8d7da !important;
+  color: #721c24 !important;
+  border: 1px solid #f5c6cb;
+}
+
+/* Button Styling */
+.btn-light.btn-ghost {
+  background-color: transparent;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.btn-light.btn-ghost:hover {
+  background-color: #f8f9fa;
+  transform: scale(1.1);
+}
+
+/* Card Styling */
+.card {
+  border: 1px solid #e9ecef;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Header Buttons */
+.btn-outline-secondary {
+  border-color: #d0d7de;
+  color: #656d76;
+}
+
+.btn-outline-secondary:hover {
+  background-color: #f6f8fa;
+  border-color: #d0d7de;
+  color: #656d76;
+}
+
+.btn-primary {
+  background-color: #0969da;
+  border-color: #0969da;
+}
+
+.btn-primary:hover {
+  background-color: #0860ca;
+  border-color: #0860ca;
+}
+
+/* Dropdown Styling */
+.dropdown-toggle.btn-ghost {
+  background-color: transparent;
+  border: none;
+  color: #656d76;
+  padding: 0.5rem;
+}
+
+.dropdown-toggle.btn-ghost:hover {
+  background-color: #f6f8fa;
+  color: #0969da;
+}
+
+/* Text Styling */
+.text-muted {
+  color: #656d76 !important;
+}
+
+.fw-semibold {
+  font-weight: 600;
+}
+
+.text-dark {
+  color: #1f2328 !important;
+}
+
+.text-primary {
+  color: #0969da !important;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.cursor-pointer:hover {
+  opacity: 0.8;
+}
+
+/* Checkbox Styling */
+.form-check-input {
+  border-color: #d0d7de;
+}
+
+.form-check-input:checked {
+  background-color: #0969da;
+  border-color: #0969da;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .brands-header .d-flex {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: stretch !important;
+  }
+  
+  .brands-title {
+    font-size: 1.5rem;
+  }
+  
+  .d-flex.gap-2 {
+    flex-wrap: wrap;
+    gap: 0.5rem !important;
+  }
+  
+  .table thead th,
+  .table tbody td {
+    padding: 0.75rem 0.5rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* Offers Page Styles */
+.offers-page {
+  min-height: 100vh;
+  background-color: #f8f9fa;
+}
+
+.page-header {
+  background: linear-gradient(135deg, #B44C43 0%, #a04037 100%);
+  color: white;
+  padding: 2rem 0;
+  margin-bottom: 2rem;
+  border-radius: 0.5rem;
+}
+
+.page-header h1 {
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  font-size: 2.5rem;
+}
+
+.page-header p {
+  opacity: 0.9;
+  font-size: 1.1rem;
+}
+
+/* Stats Cards */
+.stats-card {
+  transition: all 0.3s ease;
+  border: none;
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+.stats-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.stats-card .card-body {
+  padding: 1.5rem;
+}
+
+.stats-card h4 {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+/* Search and Filter Section */
+.search-filter-card {
+  border: none;
+  border-radius: 0.75rem;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+  margin-bottom: 1.5rem;
+}
+
+.search-filter-card .card-body {
+  padding: 1.5rem;
+}
+
+.search-input-group {
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.search-input-group .form-control {
+  border: none;
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+}
+
+.search-input-group .input-group-text {
+  background-color: #f8f9fa;
+  border: none;
+  color: #6c757d;
+}
+
+.filter-select {
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid #dee2e6;
+  font-size: 0.95rem;
+}
+
+.filter-select:focus {
+  border-color: #B44C43;
+  box-shadow: 0 0 0 0.2rem rgba(180, 76, 67, 0.25);
+}
+
+/* Active Filters */
+.active-filters {
+  background-color: #f8f9fa;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+.filter-badge {
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  color: #495057;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.filter-badge .btn-close {
+  font-size: 0.75rem;
+  background: none;
+  border: none;
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+.filter-badge .btn-close:hover {
+  opacity: 1;
+}
+
+/* Main Table */
+.offers-table-card {
+  border: none;
+  border-radius: 0.75rem;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+.offers-table {
+  margin-bottom: 0;
+}
+
+.offers-table thead th {
+  background-color: #f8f9fa;
+  border: none;
+  padding: 1rem;
+  font-weight: 600;
+  color: #495057;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.offers-table tbody td {
+  padding: 1rem;
+  border-top: 1px solid #f1f3f4;
+  vertical-align: middle;
+}
+
+.clickable-row {
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.clickable-row:hover {
+  background-color: #f8f9fa;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Offer Image */
+.offer-image {
+  width: 60px;
+  height: 60px;
+  border-radius: 0.5rem;
+  object-fit: cover;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Price Display */
+.price-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.final-price {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #28a745;
+}
+
+.original-price {
+  font-size: 0.9rem;
+  color: #6c757d;
+  text-decoration: line-through;
+}
+
+/* Status Badges */
+.status-badge {
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.5rem 0.75rem;
+  border-radius: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.status-active {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.status-pending {
+  background-color: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffeaa7;
+}
+
+.status-inactive {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+.status-expired {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+/* Discount Badge */
+.discount-badge {
+  background: linear-gradient(135deg, #ffc107 0%, #fd7e14 100%);
+  color: white;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  border: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .offers-header {
+    padding: 1.5rem;
+  }
+  
+  .offers-header h4 {
+    font-size: 1.5rem;
+  }
+  
+  .filter-dropdown .dropdown-menu {
+    min-width: 250px;
+    padding: 1rem;
+  }
+  
+  .action-buttons {
+    opacity: 1;
+  }
+  
+  .clickable-row:hover {
+    transform: none;
+  }
+}
+
+@media (max-width: 576px) {
+  .offers-table .table td,
+  .offers-table .table th {
+    padding: 0.75rem 0.5rem;
+    font-size: 0.875rem;
+  }
+  
+  .offer-image {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .action-buttons .btn {
+    width: 32px;
+    height: 32px;
+  }
+} 

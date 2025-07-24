@@ -436,3 +436,94 @@ export const CreateBookingSchema = yup.object().shape({
 export const NewsletterSchema = yup.object().shape({
   email: yup.string().email('Invalid email').required('Email is required'),
 });
+
+export const CreateOfferSchema = yup.object().shape({
+  title: yup
+    .string()
+    .required('Title is required')
+    .min(3, 'Title must be at least 3 characters')
+    .max(100, 'Title must be at most 100 characters'),
+  price_before: yup
+    .string()
+    .required('Original price is required')
+    .matches(/^\d+(\.\d{1,2})?$/, 'Price must be a valid number'),
+  image: yup
+    .string()
+    .required('Image is required')
+    .url('Image must be a valid URL'),
+  discount_rate: yup
+    .string()
+    .required('Discount rate is required')
+    .matches(/^\d+(\.\d{1,2})?$/, 'Discount rate must be a valid number')
+    .test('discount-range', 'Discount rate must be between 0 and 100', (value) => {
+      if (!value) return false;
+      const num = parseFloat(value);
+      return num >= 0 && num <= 100;
+    }),
+  category_type: yup
+    .string()
+    .required('Category is required')
+    .oneOf([
+      'groceries',
+      'premium_fruits',
+      'home_kitchen',
+      'fashion',
+      'electronics',
+      'beauty',
+      'home_improvement',
+      'sports_toys_luggage'
+    ], 'Invalid category selected'),
+  brand_id: yup
+    .number()
+    .optional()
+    .positive('Brand ID must be positive')
+    .integer('Brand ID must be an integer'),
+});
+
+export const EditOfferSchema = yup.object().shape({
+  title: yup
+    .string()
+    .optional()
+    .min(3, 'Title must be at least 3 characters')
+    .max(100, 'Title must be at most 100 characters'),
+  price_before: yup
+    .string()
+    .optional()
+    .matches(/^\d+(\.\d{1,2})?$/, 'Price must be a valid number'),
+  image: yup
+    .string()
+    .optional()
+    .url('Image must be a valid URL'),
+  discount_rate: yup
+    .string()
+    .optional()
+    .matches(/^\d+(\.\d{1,2})?$/, 'Discount rate must be a valid number')
+    .test('discount-range', 'Discount rate must be between 0 and 100', (value) => {
+      if (!value) return true; // Optional field
+      const num = parseFloat(value);
+      return num >= 0 && num <= 100;
+    }),
+
+  category_type: yup
+    .string()
+    .optional()
+    .oneOf([
+      'groceries',
+      'premium_fruits', 
+      'home_kitchen',
+      'fashion',
+      'electronics',
+      'beauty',
+      'home_improvement',
+      'sports_toys_luggage'
+    ], 'Invalid category selected'),
+  status: yup
+    .string()
+    .optional()
+    .oneOf(['active', 'inactive', 'pending', 'expired'], 'Invalid status'),
+  brand_id: yup
+    .number()
+    .optional()
+    .positive('Brand ID must be positive')
+    .integer('Brand ID must be an integer'),
+});
