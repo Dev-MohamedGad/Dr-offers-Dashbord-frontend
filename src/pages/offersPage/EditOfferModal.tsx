@@ -30,7 +30,7 @@ import {
   cilCheckCircle,
   cilWarning,
 } from '@coreui/icons';
-import { Offer, UpdateOfferDto } from '../../types/offer.type';
+import { Offer, UpdateOfferDto, OfferStatus } from '../../types/offer.type';
 import { useUpdateOfferMutation } from '../../redux/slices/offersSlice/offersApiSlice';
 import { useUpdateUserImageMutation } from '../../redux/slices/usersSlice/usersApiSlice';
 import Swal from 'sweetalert2';
@@ -60,7 +60,7 @@ interface FormData extends UpdateOfferDto {
   image: string;
   discount_rate: string;
   category_type: string;
-  status: 'active' | 'inactive' | 'pending' | 'expired';
+  status: OfferStatus;
 }
 
 interface FormErrors {
@@ -99,10 +99,10 @@ const getCategoryLabel = (category: CategoryType): string => {
 const categoryOptions = Object.values(CategoryType);
 
 const statusOptions = [
-  { value: 'active', label: 'Active', color: 'success' },
-  { value: 'pending', label: 'Pending', color: 'warning' },
-  { value: 'inactive', label: 'Inactive', color: 'secondary' },
-  { value: 'expired', label: 'Expired', color: 'danger' }
+  { value: OfferStatus.ACTIVE, label: 'Active', color: 'success' },
+  { value: OfferStatus.PENDING, label: 'Pending', color: 'warning' },
+  { value: OfferStatus.INACTIVE, label: 'Inactive', color: 'secondary' },
+  { value: OfferStatus.EXPIRED, label: 'Expired', color: 'danger' }
 ];
 
 const EditOfferModal: React.FC<EditOfferModalProps> = ({ 
@@ -117,7 +117,7 @@ const EditOfferModal: React.FC<EditOfferModalProps> = ({
     image: '',
     discount_rate: '',
     category_type: '',
-    status: 'pending',
+    status: OfferStatus.PENDING,
   });
   
   const [originalData, setOriginalData] = useState<FormData>({
@@ -126,7 +126,7 @@ const EditOfferModal: React.FC<EditOfferModalProps> = ({
     image: '',
     discount_rate: '',
     category_type: '',
-    status: 'pending',
+    status: OfferStatus.PENDING,
   });
   
   const [errors, setErrors] = useState<FormErrors>({});
@@ -148,7 +148,7 @@ const EditOfferModal: React.FC<EditOfferModalProps> = ({
         image: offer.image || '',
         discount_rate: offer.discount_rate?.toString() || '',
         category_type: offer.category_type || '',
-        status: offer.status || 'pending',
+        status: offer.status || OfferStatus.PENDING,
       };
       
       setFormData(initialData);
