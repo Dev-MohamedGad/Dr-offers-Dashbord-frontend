@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import {
   CButton,
   CCard,
@@ -43,6 +44,7 @@ interface ExtendedBrand extends Brand {
 
 const BrandsPage: React.FC = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const [localBrands, setLocalBrands] = useState<ExtendedBrand[]>([]);
   const [filteredBrands, setFilteredBrands] = useState<ExtendedBrand[]>([]);
   const [selectAll, setSelectAll] = useState(false);
@@ -115,7 +117,7 @@ const BrandsPage: React.FC = () => {
 
   const downloadCSV = () => {
     // Define CSV headers
-    const headers = ['ID', 'Brand Name', 'Owner', 'Status', 'Document', 'Plan', 'Category', 'Views', 'Clicks', 'Visitors'];
+    const headers = ['ID', t('brands.brandName'), t('brands.owner'), t('common.status'), t('brands.document'), t('brands.plan'), t('brands.category'), t('brands.views'), t('brands.clicks'), t('brands.visitors')];
     
     // Convert data to CSV format (use filtered data)
     const csvData = filteredBrands.map(brand => [
@@ -152,11 +154,11 @@ const BrandsPage: React.FC = () => {
     const normalizedStatus = status.charAt(0).toUpperCase() + status.slice(1).toLowerCase();
     switch (status.toLowerCase()) {
       case 'active':
-        return <CBadge color="success" shape="rounded-pill">● {normalizedStatus}</CBadge>;
+        return <CBadge color="success" shape="rounded-pill">● {t('common.active')}</CBadge>;
       case 'pending':
-        return <CBadge color="warning" shape="rounded-pill">● {normalizedStatus}</CBadge>;
+        return <CBadge color="warning" shape="rounded-pill">● {t('dashboard.pending')}</CBadge>;
       case 'rejected':
-        return <CBadge color="danger" shape="rounded-pill">● {normalizedStatus}</CBadge>;
+        return <CBadge color="danger" shape="rounded-pill">● {t('dashboard.rejected')}</CBadge>;
       default:
         return <CBadge color="secondary" shape="rounded-pill">● {normalizedStatus}</CBadge>;
     }
@@ -248,10 +250,10 @@ const BrandsPage: React.FC = () => {
     return (
       <CContainer>
         <EmptyState
-          title="Error Loading Brands"
-          description={error && 'data' in error ? error.data as string : 'An error occurred while fetching brands'}
+          title={t('brands.errorLoadingBrands')}
+          description={error && 'data' in error ? error.data as string : t('messages.error.general')}
           actionButton={{
-            text: 'Retry',
+            text: t('users.retry'),
             onClick: () => refetch(),
             color: 'primary'
           }}
@@ -268,7 +270,7 @@ const BrandsPage: React.FC = () => {
                           <div className="d-flex gap-2">
            <CButton color="secondary" variant="outline" onClick={downloadCSV}>
              <CIcon icon={cilCloudDownload} className="me-2" />
-             Download CSV
+             {t('brands.downloadCSV')}
            </CButton>
            <CDropdown>
              <CDropdownToggle 
@@ -279,7 +281,7 @@ const BrandsPage: React.FC = () => {
                }}
              >
                <CIcon icon={cilFilter} className="me-2" />
-               Filter
+               {t('brands.filter')}
                {(filters.status !== 'All' || filters.plan !== 'All') && (
                  <CBadge color="light" className="ms-2" style={{ color: 'black' }}>
                    {Object.values(filters).filter(f => f !== 'All').length}
@@ -288,13 +290,18 @@ const BrandsPage: React.FC = () => {
              </CDropdownToggle>
              <CDropdownMenu style={{ minWidth: '250px', padding: '1rem' }}>
                <div className="mb-3">
-                 <label className="form-label fw-semibold">Status</label>
+                 <label className="form-label fw-semibold">{t('common.status')}</label>
                  <div className="d-flex flex-wrap gap-2">
-                   {['All', 'Active', 'Pending', 'Rejected'].map(status => (
+                   {[
+                     { key: 'All', label: t('common.status') === 'Status' ? 'All' : 'الكل' },
+                     { key: 'Active', label: t('common.active') },
+                     { key: 'Pending', label: t('dashboard.pending') },
+                     { key: 'Rejected', label: t('dashboard.rejected') }
+                   ].map(status => (
                      <CButton
-                       key={status}
+                       key={status.key}
                        size="sm"
-                       style={filters.status === status ? {
+                       style={filters.status === status.key ? {
                          backgroundColor: '#B44C43',
                          borderColor: '#B44C43',
                          color: 'white'
@@ -303,15 +310,15 @@ const BrandsPage: React.FC = () => {
                          color: '#B44C43',
                          backgroundColor: 'transparent'
                        }}
-                       onClick={() => handleFilterChange('status', status)}
+                       onClick={() => handleFilterChange('status', status.key)}
                      >
-                       {status}
+                       {status.label}
                      </CButton>
                    ))}
                  </div>
                </div>
                <div className="mb-3">
-                 <label className="form-label fw-semibold">Plan</label>
+                 <label className="form-label fw-semibold">{t('brands.plan')}</label>
                  <div className="d-flex flex-wrap gap-2">
                    {getUniquePlans().map(plan => (
                      <CButton
@@ -335,10 +342,10 @@ const BrandsPage: React.FC = () => {
                </div>
                <div className="d-flex justify-content-between">
                  <CButton size="sm" color="secondary" variant="outline" onClick={clearFilters}>
-                   Clear All
+                   {t('brands.clearAll')}
                  </CButton>
                  <div className="text-muted small">
-                   Showing {filteredBrands.length} of {localBrands.length} brands
+                   {t('brands.showing')} {filteredBrands.length} {t('brands.of')} {localBrands.length} {t('navigation.brands').toLowerCase()}
                  </div>
                </div>
              </CDropdownMenu>
@@ -362,17 +369,17 @@ const BrandsPage: React.FC = () => {
                     }}
                   />
                 </CTableHeaderCell>
-                <CTableHeaderCell className="border-0 fw-semibold text-muted">Brand</CTableHeaderCell>
-                <CTableHeaderCell className="border-0 fw-semibold text-muted">Status</CTableHeaderCell>
-                <CTableHeaderCell className="border-0 fw-semibold text-muted">Document</CTableHeaderCell>
+                <CTableHeaderCell className="border-0 fw-semibold text-muted">{t('brands.brand')}</CTableHeaderCell>
+                <CTableHeaderCell className="border-0 fw-semibold text-muted">{t('common.status')}</CTableHeaderCell>
+                <CTableHeaderCell className="border-0 fw-semibold text-muted">{t('brands.document')}</CTableHeaderCell>
                 <CTableHeaderCell className="border-0 fw-semibold text-muted text-center">
-                  <span style={{ cursor: 'pointer' }}>Category</span>
+                  <span style={{ cursor: 'pointer' }}>{t('brands.category')}</span>
                 </CTableHeaderCell>
                 <CTableHeaderCell className="border-0 fw-semibold text-muted text-center">
-                  <span style={{ cursor: 'pointer' }}>Plan</span>
+                  <span style={{ cursor: 'pointer' }}>{t('brands.plan')}</span>
                 </CTableHeaderCell>
-                <CTableHeaderCell className="border-0 fw-semibold text-muted text-center">Views</CTableHeaderCell>
-                <CTableHeaderCell className="border-0 fw-semibold text-muted text-center">Actions</CTableHeaderCell>
+                <CTableHeaderCell className="border-0 fw-semibold text-muted text-center">{t('brands.views')}</CTableHeaderCell>
+                <CTableHeaderCell className="border-0 fw-semibold text-muted text-center">{t('common.actions')}</CTableHeaderCell>
               </CTableRow>
             </CTableHead>
                          <CTableBody>
@@ -399,7 +406,7 @@ const BrandsPage: React.FC = () => {
                       {(brand.owner?.name || brand.owner_name) ? (
                         <div className="text-muted small">{brand.owner?.name || brand.owner_name}</div>
                       ) : (
-                        <div className="text-muted small">Brand ID: {brand.id}</div>
+                        <div className="text-muted small">{t('brands.brandId')}: {brand.id}</div>
                       )}
                     </div>
                   </CTableDataCell>
@@ -418,7 +425,7 @@ const BrandsPage: React.FC = () => {
                             borderRadius: '8px',
                             cursor: 'default'
                           }}
-                          title={`Document: ${brand.business_docs}`}
+                          title={`${t('brands.document')}: ${brand.business_docs}`}
                         >
                           <CIcon icon={cilDescription} size="lg" style={{ color: 'white' }} />
                         </div>
@@ -433,7 +440,7 @@ const BrandsPage: React.FC = () => {
                             borderRadius: '8px',
                             cursor: 'default'
                           }}
-                          title="No document provided"
+                          title={t('brands.noDocument')}
                         >
                           <CIcon icon={cilDescription} size="lg" className="text-muted opacity-50" />
                         </div>
@@ -460,7 +467,7 @@ const BrandsPage: React.FC = () => {
                           e.stopPropagation();
                           handleEditClick(brand);
                         }}
-                        title="Edit Brand"
+                        title={t('brands.editBrand')}
                       >
                         <CIcon icon={cilPencil} size="sm" className="text-warning" />
                       </CButton>
@@ -473,7 +480,7 @@ const BrandsPage: React.FC = () => {
                           e.stopPropagation();
                           handleDeleteClick(brand);
                         }}
-                        title="Delete Brand"
+                        title={t('brands.deleteBrand')}
                       >
                         <CIcon icon={cilTrash} size="sm" className="text-danger" />
                       </CButton>
@@ -486,7 +493,7 @@ const BrandsPage: React.FC = () => {
                           e.stopPropagation();
                           navigate(`/brands/${brand.id}`);
                         }}
-                        title="View Details"
+                        title={t('common.details')}
                       >
                         <CIcon icon={cilOptions} size="sm" className="text-info" />
                       </CButton>
@@ -500,8 +507,8 @@ const BrandsPage: React.FC = () => {
           {/* No data state */}
           {filteredBrands.length === 0 && !isLoading && (
             <EmptyState
-              title="No Brands Found"
-              description="Try adjusting your filters or add new brands"
+              title={t('brands.noDataFound')}
+              description={t('brands.tryAdjusting')}
               className="py-5"
             />
           )}
@@ -519,7 +526,7 @@ const BrandsPage: React.FC = () => {
         <CModalHeader>
           <CModalTitle>
             <CIcon icon={cilWarning} className="me-2 text-warning" />
-            Confirm Delete
+            {t('brands.confirmDelete')}
           </CModalTitle>
         </CModalHeader>
         <CModalBody>
@@ -532,16 +539,16 @@ const BrandsPage: React.FC = () => {
                 style={{ opacity: 0.7 }}
               />
             </div>
-            <h5 className="mb-3">Are you sure you want to delete this brand?</h5>
+            <h5 className="mb-3">{t('brands.areYouSure')}</h5>
             {brandToDelete && (
               <div className="mb-3">
-                <strong>Brand:</strong> {brandToDelete.brand_name}
+                <strong>{t('brands.brand')}:</strong> {brandToDelete.brand_name}
                 <br />
-                <strong>Owner:</strong> {brandToDelete.owner?.name || brandToDelete.owner_name || 'N/A'}
+                <strong>{t('brands.owner')}:</strong> {brandToDelete.owner?.name || brandToDelete.owner_name || 'N/A'}
               </div>
             )}
             <p className="text-muted">
-              This action cannot be undone. The brand and all associated data will be permanently removed.
+              {t('brands.cannotBeUndone')}
             </p>
           </div>
         </CModalBody>
@@ -554,7 +561,7 @@ const BrandsPage: React.FC = () => {
             className="me-2"
           >
             <CIcon icon={cilX} className="me-2" />
-            Cancel
+            {t('common.cancel')}
           </CButton>
           <CButton
             color="danger"
@@ -564,12 +571,12 @@ const BrandsPage: React.FC = () => {
             {isDeleting ? (
               <>
                 <CSpinner size="sm" className="me-2" />
-                Deleting...
+                {t('brands.deleting')}
               </>
             ) : (
               <>
                 <CIcon icon={cilTrash} className="me-2" />
-                Delete Brand
+                {t('brands.deleteBrand')}
               </>
             )}
           </CButton>

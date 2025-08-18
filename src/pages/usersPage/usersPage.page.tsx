@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   CButton,
   CCard,
@@ -61,6 +62,7 @@ interface ExtendedUser extends Item {
 }
 
 const UsersPage = () => {
+  const { t } = useTranslation();
   const [visible, setVisible] = useState<boolean>(false);
   const [deleteModal, setDeleteModal] = useState<boolean>(false);
   const [selectedItem, setSelectedItem] = useState<Item>({});
@@ -142,7 +144,7 @@ const UsersPage = () => {
 
   const downloadCSV = () => {
     // Define CSV headers
-    const headers = ['ID', 'Name', 'Email', 'Phone', 'Role', 'Brand', 'Status', 'Email Verified', 'Created Date'];
+    const headers = ['ID', t('common.name'), t('common.email'), t('common.phone'), t('users.role'), t('brands.brand'), t('common.status'), t('users.emailVerified'), t('common.date')];
     
     // Convert data to CSV format
     const csvData = filteredUsers.map(user => [
@@ -215,11 +217,11 @@ const UsersPage = () => {
   const getRoleBadge = (role: string) => {
     switch (role) {
       case 'owner':
-        return <CBadge color="primary" shape="rounded-pill">Owner</CBadge>;
+        return <CBadge color="primary" shape="rounded-pill">{t('users.owner')}</CBadge>;
       case 'admin':
-        return <CBadge color="warning" shape="rounded-pill">Admin</CBadge>;
+        return <CBadge color="warning" shape="rounded-pill">{t('users.admin')}</CBadge>;
       case 'visitor':
-        return <CBadge color="info" shape="rounded-pill">Visitor</CBadge>;
+        return <CBadge color="info" shape="rounded-pill">{t('users.visitor')}</CBadge>;
       default:
         return <CBadge color="secondary" shape="rounded-pill">{role}</CBadge>;
     }
@@ -227,9 +229,9 @@ const UsersPage = () => {
 
   const getStatusBadge = (isActive: boolean) => {
     return isActive ? (
-      <CBadge color="success" shape="rounded-pill">● Active</CBadge>
+      <CBadge color="success" shape="rounded-pill">● {t('common.active')}</CBadge>
     ) : (
-      <CBadge color="danger" shape="rounded-pill">● Inactive</CBadge>
+      <CBadge color="danger" shape="rounded-pill">● {t('common.inactive')}</CBadge>
     );
   };
 
@@ -254,10 +256,10 @@ const UsersPage = () => {
     return (
       <CContainer>
         <EmptyState
-          title="Error Loading Users"
-          description="An error occurred while fetching users data"
+          title={t('users.errorLoadingUsers')}
+          description={t('users.errorFetchingUsers')}
           actionButton={{
-            text: 'Retry',
+            text: t('users.retry'),
             onClick: () => refetch(),
             color: 'primary'
           }}
@@ -275,14 +277,14 @@ const UsersPage = () => {
           <div className="d-flex gap-2">
             <CButton color="secondary" variant="outline" onClick={downloadCSV}>
               <CIcon icon={cilCloudDownload} className="me-2" />
-              Export CSV
+              {t('users.exportCSV')}
             </CButton>
             <CDropdown>
               <CDropdownToggle 
                 className="filter-btn"
               >
                 <CIcon icon={cilFilter} className="me-2" />
-                Filter
+                {t('brands.filter')}
                 {(filters.status !== 'All' || filters.role !== 'All' || filters.verified !== 'All') && (
                   <CBadge color="light" className="ms-2 filter-badge">
                     {Object.values(filters).filter(f => f !== 'All').length}
@@ -291,22 +293,26 @@ const UsersPage = () => {
               </CDropdownToggle>
               <CDropdownMenu className="filter-dropdown">
                 <div className="filter-section">
-                  <label className="filter-label">Status</label>
+                  <label className="filter-label">{t('common.status')}</label>
                   <div className="filter-options">
-                    {['All', 'Active', 'Inactive'].map(status => (
+                    {[
+                      { key: 'All', label: t('common.status') === 'Status' ? 'All' : 'الكل' },
+                      { key: 'Active', label: t('common.active') },
+                      { key: 'Inactive', label: t('common.inactive') }
+                    ].map(status => (
                       <CButton
-                        key={status}
+                        key={status.key}
                         size="sm"
-                        className={filters.status === status ? 'filter-btn-active' : 'filter-btn-inactive'}
-                        onClick={() => handleFilterChange('status', status)}
+                        className={filters.status === status.key ? 'filter-btn-active' : 'filter-btn-inactive'}
+                        onClick={() => handleFilterChange('status', status.key)}
                       >
-                        {status}
+                        {status.label}
                       </CButton>
                     ))}
                   </div>
                 </div>
                 <div className="filter-section">
-                  <label className="filter-label">Role</label>
+                  <label className="filter-label">{t('users.role')}</label>
                   <div className="filter-options">
                     {getUniqueRoles().map(role => (
                       <CButton
@@ -321,26 +327,30 @@ const UsersPage = () => {
                   </div>
                 </div>
                 <div className="filter-section">
-                  <label className="filter-label">Email Verification</label>
+                  <label className="filter-label">{t('users.emailVerification')}</label>
                   <div className="filter-options">
-                    {['All', 'Verified', 'Unverified'].map(verified => (
+                    {[
+                      { key: 'All', label: t('common.status') === 'Status' ? 'All' : 'الكل' },
+                      { key: 'Verified', label: t('users.verified') },
+                      { key: 'Unverified', label: t('users.unverified') }
+                    ].map(verified => (
                       <CButton
-                        key={verified}
+                        key={verified.key}
                         size="sm"
-                        className={filters.verified === verified ? 'filter-btn-active' : 'filter-btn-inactive'}
-                        onClick={() => handleFilterChange('verified', verified)}
+                        className={filters.verified === verified.key ? 'filter-btn-active' : 'filter-btn-inactive'}
+                        onClick={() => handleFilterChange('verified', verified.key)}
                       >
-                        {verified}
+                        {verified.label}
                       </CButton>
                     ))}
                   </div>
                 </div>
                 <div className="filter-footer">
                   <CButton size="sm" color="secondary" variant="outline" onClick={clearFilters}>
-                    Clear All
+                    {t('brands.clearAll')}
                   </CButton>
                   <span className="filter-count">
-                    Showing {filteredUsers.length} of {localUsers.length}
+                    {t('brands.showing')} {filteredUsers.length} {t('brands.of')} {localUsers.length}
                   </span>
                 </div>
               </CDropdownMenu>
@@ -350,7 +360,7 @@ const UsersPage = () => {
               onClick={addItem}
             >
               <CIcon icon={cilUserPlus} className="me-2" />
-              Add User
+              {t('users.addUser')}
             </CButton>
           </div>
         </div>
@@ -360,14 +370,14 @@ const UsersPage = () => {
         visible={deleteModal}
         selectedItem={selectedItem}
         setVisible={setDeleteModal}
-        modalTitle="Delete User"
+        modalTitle={t('users.deleteUser')}
         action={removeUser}
       />
 
       <EditAndCreatUserForm
         visible={visible}
         setVisible={setVisible}
-        modalTitle={modalType === 'create' ? 'Create User' : 'Edit User'}
+        modalTitle={modalType === 'create' ? t('users.createUser') : t('users.editUser')}
         modalType={modalType}
         selectedItem={selectedItem}
         action={modalType === 'create' ? addUser : editUser}
@@ -378,12 +388,12 @@ const UsersPage = () => {
         <CCardBody className="p-0">
           {filteredUsers.length === 0 ? (
             <EmptyState 
-              title="No Users Found"
+              title={t('users.noUsersFound')}
               description={filters.status !== 'All' || filters.role !== 'All' || filters.verified !== 'All' 
-                ? "No users match the current filters. Try adjusting your filters."
-                : "No users are currently registered in the system."}
+                ? t('users.noUsersFilters')
+                : t('users.noUsersSystem')}
               actionButton={{
-                text: "Add New User",
+                text: t('users.addNewUser'),
                 onClick: addItem,
                 color: "primary"
               }}
@@ -394,13 +404,13 @@ const UsersPage = () => {
               <CTableHead>
                 <CTableRow>
                
-                  <CTableHeaderCell>User</CTableHeaderCell>
-                  <CTableHeaderCell>Contact</CTableHeaderCell>
-                  <CTableHeaderCell>Brand</CTableHeaderCell>
-                  <CTableHeaderCell className="text-center">Role</CTableHeaderCell>
-                  <CTableHeaderCell className="text-center">Status</CTableHeaderCell>
-                  <CTableHeaderCell className="text-center">Verification</CTableHeaderCell>
-                  <CTableHeaderCell className="text-center">Actions</CTableHeaderCell>
+                  <CTableHeaderCell>{t('users.user')}</CTableHeaderCell>
+                  <CTableHeaderCell>{t('users.contact')}</CTableHeaderCell>
+                  <CTableHeaderCell>{t('brands.brand')}</CTableHeaderCell>
+                  <CTableHeaderCell className="text-center">{t('users.role')}</CTableHeaderCell>
+                  <CTableHeaderCell className="text-center">{t('common.status')}</CTableHeaderCell>
+                  <CTableHeaderCell className="text-center">{t('users.verification')}</CTableHeaderCell>
+                  <CTableHeaderCell className="text-center">{t('common.actions')}</CTableHeaderCell>
                 </CTableRow>
               </CTableHead>
               <CTableBody>
@@ -426,7 +436,7 @@ const UsersPage = () => {
                           <CIcon icon={cilEnvelopeLetter} size="sm" className="contact-icon" />
                           <span className="contact-text">{user.email}</span>
                           {user.is_email_verified && (
-                            <CTooltip content="Email Verified">
+                            <CTooltip content={t('users.emailVerified')}>
                               <CIcon icon={cilCheckCircle} size="sm" className="text-success ms-1" />
                             </CTooltip>
                           )}
@@ -436,7 +446,7 @@ const UsersPage = () => {
                             <CIcon icon={cilPhone} size="sm" className="contact-icon" />
                             <span className="contact-text">{user.phone_number}</span>
                             {user.is_phone_verified && (
-                              <CTooltip content="Phone Verified">
+                              <CTooltip content={t('users.phoneVerified')}>
                                 <CIcon icon={cilCheckCircle} size="sm" className="text-success ms-1" />
                               </CTooltip>
                             )}
@@ -455,7 +465,7 @@ const UsersPage = () => {
                     </CTableDataCell>
                     <CTableDataCell className="text-center">
                       <div className="verification-badges">
-                        <CTooltip content={`Email ${user.is_email_verified ? 'Verified' : 'Not Verified'}`}>
+                        <CTooltip content={`${t('common.email')} ${user.is_email_verified ? t('users.verified') : t('users.emailNotVerified')}`}>
                           <CBadge 
                             color={user.is_email_verified ? 'success' : 'warning'} 
                             className="verification-badge"
@@ -463,7 +473,7 @@ const UsersPage = () => {
                             <CIcon icon={cilEnvelopeLetter} size="sm" />
                           </CBadge>
                         </CTooltip>
-                        <CTooltip content={`Phone ${user.is_phone_verified ? 'Verified' : 'Not Verified'}`}>
+                        <CTooltip content={`${t('common.phone')} ${user.is_phone_verified ? t('users.verified') : t('users.phoneNotVerified')}`}>
                           <CBadge 
                             color={user.is_phone_verified ? 'success' : 'secondary'} 
                             className="verification-badge"
@@ -475,7 +485,7 @@ const UsersPage = () => {
                     </CTableDataCell>
                     <CTableDataCell className="text-center" onClick={(e) => e.stopPropagation()}>
                       <div className="action-buttons">
-                        <CTooltip content="Edit User" placement="top">
+                        <CTooltip content={t('users.editUser')} placement="top">
                           <CButton 
                             size="sm" 
                             className="action-btn action-btn-edit"
@@ -488,7 +498,7 @@ const UsersPage = () => {
                             <CIcon icon={cilPencil} size="sm" />
                           </CButton>
                         </CTooltip>
-                        <CTooltip content="Delete User" placement="top">
+                        <CTooltip content={t('users.deleteUser')} placement="top">
                           <CButton 
                             size="sm" 
                             className="action-btn action-btn-delete"
@@ -501,7 +511,7 @@ const UsersPage = () => {
                             <CIcon icon={cilTrash} size="sm" />
                           </CButton>
                         </CTooltip>
-                        <CTooltip content="View Details" placement="top">
+                        <CTooltip content={t('common.details')} placement="top">
                           <CButton 
                             size="sm" 
                             className="action-btn action-btn-view"

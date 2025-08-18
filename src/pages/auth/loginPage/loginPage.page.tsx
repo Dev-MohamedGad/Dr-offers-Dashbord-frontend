@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import {
   CButton,
   CCard,
@@ -25,6 +26,7 @@ import { setCurrentUser } from '@redux/slices/userSlice/userSlice';
 import Swal from 'sweetalert2';
 
 const Login = () => {
+  const { t } = useTranslation();
   const [login, { isLoading }] = useLoginMutation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -47,8 +49,8 @@ const Login = () => {
     } catch (err) {
       Swal.fire({
         icon: 'error',
-        title: 'Login Failed',
-        text: 'Invalid email or password. Please try again.',
+        title: t('auth.loginFailed'),
+        text: t('auth.invalidCredentials'),
         confirmButtonColor: '#B44C43',
       });
       console.log(err);
@@ -80,7 +82,7 @@ const Login = () => {
                       <Form>
                         <div className="mb-4">
                           <p className="text-muted mb-2" style={{ fontSize: '14px', fontWeight: '500' }}>
-                            Welcome back !!!
+                            {t('auth.welcome')}
                           </p>
                           <h1 
                             className="mb-4" 
@@ -91,13 +93,13 @@ const Login = () => {
                               marginBottom: '2rem'
                             }}
                           >
-                            Sign in
+                            {t('auth.signIn')}
                           </h1>
                         </div>
 
                         <div className="mb-3">
                           <label className="form-label text-muted mb-2" style={{ fontSize: '14px', fontWeight: '500' }}>
-                            Email
+                            {t('auth.email')}
                           </label>
                           <Field
                             name="email"
@@ -119,7 +121,7 @@ const Login = () => {
                         <div className="mb-3">
                           <div className="d-flex justify-content-between align-items-center mb-2">
                             <label className="form-label text-muted mb-0" style={{ fontSize: '14px', fontWeight: '500' }}>
-                              Password
+                              {t('auth.password')}
                             </label>
                             <a 
                               href="#" 
@@ -130,7 +132,7 @@ const Login = () => {
                                 fontWeight: '500'
                               }}
                             >
-                              Forgot Password ?
+                              {t('auth.forgotPassword')}
                             </a>
                           </div>
                           <Field
@@ -174,7 +176,7 @@ const Login = () => {
                             e.currentTarget.style.boxShadow = '0 4px 15px rgba(180, 76, 67, 0.3)';
                           }}
                         >
-                          {isLoading ? 'Signing in...' : 'SIGN IN'}
+                          {isLoading ? t('auth.signingIn') : t('auth.signIn').toUpperCase()}
                         </CButton>
 
                       

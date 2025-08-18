@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   CCard,
   CCardBody,
@@ -68,6 +69,7 @@ ChartJS.register(
 );
 
 function HomePage() {
+  const { t } = useTranslation();
   // Fetch brands data from API
   const { data: brandsResponse, isLoading: brandsLoading, error: brandsError } = useGetAllBrandsQuery({});
   
@@ -86,7 +88,7 @@ function HomePage() {
   const transformedBrandsData = brandsData.slice(0, 5).map(brand => ({
     id: brand.id,
     name: brand.brand_name,
-    status: brand.status === 'active' ? 'Active' : brand.status === 'pending' ? 'Pending' : 'Rejected',
+    status: brand.status === 'active' ? t('common.active') : brand.status === 'pending' ? t('dashboard.pending') : t('dashboard.rejected'),
     color: brand.status === 'active' ? 'success' : brand.status === 'pending' ? 'secondary' : 'danger'
   }));
 
@@ -194,7 +196,7 @@ function HomePage() {
         caretSize: 6,
         callbacks: {
           title: function() {
-            return 'View';
+            return t('dashboard.viewTooltip');
           },
           label: function(context: any) {
             return context.parsed.y.toFixed(2);
@@ -259,10 +261,10 @@ function HomePage() {
 
   // Top 5 Brands Bar Chart Data - Exact match to reference image
   const top5BrandsData = {
-    labels: ['Brand1', 'Brand2', 'Brand3', 'Brand4', 'Brand5'],
+    labels: [`${t('brands.brand')}1`, `${t('brands.brand')}2`, `${t('brands.brand')}3`, `${t('brands.brand')}4`, `${t('brands.brand')}5`],
     datasets: [
       {
-        label: 'Hours',
+        label: t('dashboard.hours'),
         data: [72, 65, 50, 35, 22],
         backgroundColor: '#B44C43',
         borderRadius: {
@@ -328,7 +330,7 @@ function HomePage() {
           },
           padding: 15,
           callback: function(value: any) {
-            return `${value} Hr`;
+            return `${value} ${t('dashboard.hours')}`;
           }
         }
       }
@@ -342,10 +344,10 @@ function HomePage() {
 
   // Subscription Plans Data - Exact match to design
   const subscriptionPlansRawData = [
-    { label: 'Free', value: 38.6, color: '#1f2937' },
-    { label: 'Custom', value: 22.5, color: '#B44C43' },
-    { label: 'Free', value: 30.8, color: '#e5e7eb' },
-    { label: 'Other', value: 8.1, color: '#Custom' }
+    { label: t('dashboard.free'), value: 38.6, color: '#1f2937' },
+    { label: t('dashboard.custom'), value: 22.5, color: '#B44C43' },
+    { label: t('dashboard.free'), value: 30.8, color: '#e5e7eb' },
+    { label: t('dashboard.other'), value: 8.1, color: '#Custom' }
   ];
 
   // Calculate total and validate data
@@ -429,11 +431,11 @@ function HomePage() {
       {/* Metrics Row */}
       <CRow className="mb-3 g-2">
         {/* Views Card */}
-        <CCol xs={12} sm={6} md={6} lg={3}>
+        <CCol xs={12} sm={6} md={6} lg={3} className="mb-3">
           <CCard className="metric-card h-100">
             <CCardBody>
               <div className="metric-content">
-                <div className="metric-label">Views</div>
+                <div className="metric-label">{t('dashboard.views')}</div>
                 <div className="metric-value">{metrics.views.value}</div>
                 <div className={`metric-change ${getTrendColor(metrics.views.trend)}`}>
                   <CIcon icon={getTrendIcon(metrics.views.trend)} size="sm" className="me-1" />
@@ -449,7 +451,7 @@ function HomePage() {
           <CCard className="metric-card h-100">
             <CCardBody>
               <div className="metric-content">
-                <div className="metric-label">Visits</div>
+                <div className="metric-label">{t('dashboard.visits')}</div>
                 <div className="metric-value">{metrics.visits.value}</div>
                 <div className={`metric-change ${getTrendColor(metrics.visits.trend)}`}>
                   <CIcon icon={getTrendIcon(metrics.visits.trend)} size="sm" className="me-1" />
@@ -465,7 +467,7 @@ function HomePage() {
           <CCard className="metric-card h-100">
             <CCardBody>
               <div className="metric-content">
-                <div className="metric-label">Active Brands</div>
+                <div className="metric-label">{t('dashboard.activeBrands')}</div>
                 <div className="metric-value">{metrics.activeBrands.value}</div>
                 <div className={`metric-change ${getTrendColor(metrics.activeBrands.trend)}`}>
                   <CIcon icon={getTrendIcon(metrics.activeBrands.trend)} size="sm" className="me-1" />
@@ -481,7 +483,7 @@ function HomePage() {
           <CCard className="metric-card h-100">
             <CCardBody>
               <div className="metric-content">
-                <div className="metric-label">Active Users</div>
+                <div className="metric-label">{t('dashboard.activeUsers')}</div>
                 <div className="metric-value">{metrics.activeUsers.value}</div>
                 <div className={`metric-change ${getTrendColor(metrics.activeUsers.trend)}`}>
                   <CIcon icon={getTrendIcon(metrics.activeUsers.trend)} size="sm" className="me-1" />
@@ -508,7 +510,7 @@ function HomePage() {
         <CCol xs={12} xl={4}>
           <CCard className="brands-list-card h-100">
             <div className="brands-header">
-              <h6 className="brands-title">Brands</h6>
+              <h6 className="brands-title">{t('dashboard.brands')}</h6>
               <CIcon icon={cilCaretTop} size="sm" className="text-muted" />
             </div>
             
@@ -516,15 +518,15 @@ function HomePage() {
               {brandsLoading ? (
                 <div className="text-center py-3">
                   <CSpinner size="sm" />
-                  <div className="mt-2 text-muted">Loading brands...</div>
+                  <div className="mt-2 text-muted">{t('dashboard.loadingBrands')}</div>
                 </div>
               ) : brandsError ? (
                 <div className="text-center py-3 text-danger">
-                  <small>Error loading brands</small>
+                  <small>{t('dashboard.errorLoadingBrands')}</small>
                 </div>
               ) : transformedBrandsData.length === 0 ? (
                 <div className="text-center py-3 text-muted">
-                  <small>No brands found</small>
+                  <small>{t('dashboard.noBrandsFound')}</small>
                 </div>
               ) : (
                 transformedBrandsData.map((brand) => (
@@ -556,11 +558,11 @@ function HomePage() {
           <CCard className="chart-card h-100">
             <CCardBody>
               <div className="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center mb-3">
-                <h6 className="chart-title mb-2 mb-sm-0">Top 5 Brands</h6>
+                <h6 className="chart-title mb-2 mb-sm-0">{t('dashboard.topBrands')}</h6>
                 <div className="chart-legend d-flex align-items-center">
                   <div className="legend-item d-flex align-items-center">
                     <div className="legend-color me-2" style={{backgroundColor: '#B44C43'}}></div>
-                    <span className="legend-text">Brand</span>
+                    <span className="legend-text">{t('brands.brand')}</span>
                   </div>
                 </div>
               </div>
@@ -575,13 +577,13 @@ function HomePage() {
         <CCol xs={12} lg={5}>
           <CCard className="chart-card h-100">
             <CCardBody>
-              <h6 className="chart-title mb-4">Subscription Plans</h6>
+              <h6 className="chart-title mb-4">{t('dashboard.subscriptionPlans')}</h6>
               
               {!isValidData ? (
                 <div className="text-center py-4">
                   <div className="text-muted">
                     <CIcon icon={cilChart} size="xl" className="mb-2" />
-                    <p className="mb-0">No subscription data available</p>
+                    <p className="mb-0">{t('dashboard.noSubscriptionData')}</p>
                   </div>
                 </div>
               ) : (

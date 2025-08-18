@@ -12,8 +12,10 @@ import {
 } from '@coreui/react-pro';
 import CIcon from '@coreui/icons-react';
 import { cilContrast, cilMenu, cilMoon, cilSun } from '@coreui/icons';
+import { useTranslation } from 'react-i18next';
 
 import { AppHeaderDropdown } from './header/index';
+import LanguageToggle from './LanguageToggle';
 import classNames from 'classnames';
 import { set, State } from '@redux/slices/layout/layoutSlice';
 import { useDispatch, useSelector } from 'react-redux';
@@ -21,6 +23,7 @@ import { useDispatch, useSelector } from 'react-redux';
 const AppHeader = () => {
   const headerRef = useRef<HTMLDivElement>(null);
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   const { colorMode, setColorMode } = useColorModes(
     'coreui-pro-react-admin-template-theme-modern'
   );
@@ -39,10 +42,10 @@ const AppHeader = () => {
   }, []);
 
   return (
-    <CHeader position="sticky" className="p-0 mb-4" ref={headerRef}>
-      <CContainer className="px-4" fluid>
+    <CHeader position="sticky" className="p-0 mb-4 app-header" ref={headerRef}>
+      <CContainer className="px-4 header-container" fluid>
         <CHeaderToggler
-          className="d-lg-none"
+          className="d-lg-none header-toggler"
           onClick={() => dispatch(set({ sidebarShow: !sidebarShow }))}
           style={{ marginInlineStart: '-14px' }}
         >
@@ -50,12 +53,14 @@ const AppHeader = () => {
         </CHeaderToggler>
 
         <CHeaderNav className="d-none d-md-flex ms-auto"></CHeaderNav>
-        <CHeaderNav className="ms-auto ms-md-0">
-          <li className="py-1 nav-item">
+        <CHeaderNav className="ms-auto ms-md-0 header-nav-actions">
+          <LanguageToggle />
+          
+          <li className="py-1 nav-item nav-divider">
             <div className="mx-2 text-opacity-75 vr h-100 text-body"></div>
           </li>
 
-          <CDropdown variant="nav-item" placement="bottom-end">
+          <CDropdown variant="nav-item" placement="bottom-end" className="theme-toggle">
             <CDropdownToggle caret={false}>
               {colorMode === 'dark' ? (
                 <CIcon icon={cilMoon} size="lg" />
@@ -74,7 +79,7 @@ const AppHeader = () => {
                 type="button"
                 onClick={() => setColorMode('light')}
               >
-                <CIcon className="me-2" icon={cilSun} size="lg" /> Light
+                <CIcon className="me-2" icon={cilSun} size="lg" /> {t('theme.light')}
               </CDropdownItem>
               <CDropdownItem
                 active={colorMode === 'dark'}
@@ -83,7 +88,7 @@ const AppHeader = () => {
                 type="button"
                 onClick={() => setColorMode('dark')}
               >
-                <CIcon className="me-2" icon={cilMoon} size="lg" /> Dark
+                <CIcon className="me-2" icon={cilMoon} size="lg" /> {t('theme.dark')}
               </CDropdownItem>
               <CDropdownItem
                 active={colorMode === 'auto'}
@@ -92,11 +97,11 @@ const AppHeader = () => {
                 type="button"
                 onClick={() => setColorMode('auto')}
               >
-                <CIcon className="me-2" icon={cilContrast} size="lg" /> Auto
+                <CIcon className="me-2" icon={cilContrast} size="lg" /> {t('theme.auto')}
               </CDropdownItem>
             </CDropdownMenu>
           </CDropdown>
-          <li className="py-1 nav-item">
+          <li className="py-1 nav-item nav-divider">
             <div className="mx-2 text-opacity-75 vr h-100 text-body"></div>
           </li>
 

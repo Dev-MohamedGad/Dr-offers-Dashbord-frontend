@@ -68,7 +68,7 @@
 
 @media (max-width: 768px) {
   .logo-container {
-    padding: 40px 60px;
+    padding: 20px 40px;
     border-radius: 20px;
   }
   
@@ -128,7 +128,7 @@
 /* Activity List */
 .activity-list {
   max-height: 400px;
-  overflow-y: auto;
+    overflow-y: auto;
 }
 
 .activity-item {
@@ -269,8 +269,8 @@
 /* Dashboard Container */
 .dashboard-container {
   background-color: #f8f9fa;
-  min-height: 100vh;
-  padding: 24px;
+  min-height: 90vh;
+  margin: 0 auto;
 }
 
 /* Dashboard Header */
@@ -289,36 +289,70 @@
 .metric-card {
   border: none;
   border-radius: 12px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.1);
   background: white;
-  margin-bottom: 16px;
-  height: 120px;
+  margin-bottom: clamp(8px, 1.5vw, 16px);
+  height: clamp(80px, 12vh, 110px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.metric-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #B44C43, #9d3e36);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.metric-card:hover::before {
+  opacity: 1;
+}
+
+.metric-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.08);
 }
 
 .metric-content {
-  padding: 8px 0;
+  padding: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .metric-label {
-  font-size: 0.875rem;
+  font-size: clamp(0.7rem, 1.3vw, 0.8rem);
   color: #6b7280;
-  margin-bottom: 8px;
-  font-weight: 500;
+  margin-bottom: clamp(4px, 0.8vh, 8px);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .metric-value {
-  font-size: 2rem;
+  font-size: clamp(1.4rem, 3.5vw, 2.2rem);
   font-weight: 700;
   color: #1a202c;
-  margin-bottom: 8px;
+  margin-bottom: clamp(4px, 0.8vh, 8px);
   line-height: 1;
+  font-variant-numeric: tabular-nums;
 }
 
 .metric-change {
-  font-size: 0.875rem;
+  font-size: clamp(0.7rem, 1.3vw, 0.8rem);
   font-weight: 600;
   display: flex;
   align-items: center;
+  justify-content: center;
+  gap: 3px;
 }
 
 .metric-change.text-success {
@@ -332,20 +366,28 @@
 /* Chart Card */
 .chart-card {
   border: none;
-  border-radius: 12px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.1);
   background: white;
-  height: 400px;
+  height: clamp(350px, 45vh, 500px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.chart-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
 .chart-container {
   position: relative;
-  height: 350px;
-  
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  margin: 0;
-  border: 1px solid #f0f0f0;
+  height: calc(100% - 32px);
+  margin: 16px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #ffffff 0%, #fafbfc 100%);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  padding: clamp(16px, 3vw, 24px);
+  box-sizing: border-box;
 }
 
 .chart-container::before {
@@ -374,41 +416,54 @@
 /* Brands List Card */
 .brands-list-card {
   background: #ffffff;
-  border: 1px solid #e5e7eb;
-  border-radius: 8px;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.1);
   overflow: hidden;
+  height: clamp(300px, 40vh, 450px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.brands-list-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
 .brands-header {
-  padding: 1rem 1rem 1rem 1rem;
-  border-bottom: 1px solid #f3f4f6;
-  background: #fafafa;
+  padding: clamp(16px, 3vw, 24px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  background: linear-gradient(135deg, #fafafa 0%, #f8f9fa 100%);
   display: flex;
   align-items: center;
   justify-content: space-between;
+  backdrop-filter: blur(8px);
 }
 
 .brands-list-card .brands-title {
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: #9ca3af !important;
+  font-size: clamp(0.75rem, 1.5vw, 0.875rem);
+  font-weight: 600;
+  color: #6b7280 !important;
   margin: 0;
-  letter-spacing: 0.025em;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
 }
 
 .brands-list {
   padding: 0;
   margin: 0;
+  height: calc(100% - 80px);
+  overflow-y: auto;
+  scrollbar-width: thin;
 }
 
 .brand-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.875rem 1.5rem;
-  border-bottom: 1px solid #f3f4f6;
-  transition: background-color 0.15s ease-in-out;
+  padding: clamp(12px, 2vh, 20px) clamp(16px, 3vw, 24px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
 }
 
 .brand-item:last-child {
@@ -416,7 +471,24 @@
 }
 
 .brand-item:hover {
-  background-color: #f9fafb;
+  background: linear-gradient(135deg, rgba(180, 76, 67, 0.02) 0%, rgba(180, 76, 67, 0.05) 100%);
+  transform: translateX(4px);
+}
+
+.brand-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, #B44C43, #9d3e36);
+  transform: scaleY(0);
+  transition: transform 0.2s ease;
+}
+
+.brand-item:hover::before {
+  transform: scaleY(1);
 }
 
 .brand-icon {
@@ -520,7 +592,6 @@
 
 @media (max-width: 768px) {
   .dashboard-container {
-    padding: 16px;
   }
   
   .dashboard-title {
@@ -533,7 +604,7 @@
   
   .metric-card {
     height: auto;
-    min-height: 100px;
+    min-height: 80px;
   }
 }
 
@@ -563,17 +634,30 @@
 
 /* Additional Charts Styling */
 .chart-title {
-  font-size: 1.25rem;
-  font-weight: 600;
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  font-weight: 700;
   color: #111827;
-  margin: 0 0 1.5rem 0;
+  margin: 0 0 clamp(1rem, 3vh, 2rem) 0;
   line-height: 1.2;
+  letter-spacing: -0.025em;
+  position: relative;
+}
+
+.chart-title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 40px;
+  height: 3px;
+  background: linear-gradient(90deg, #B44C43, #9d3e36);
+  border-radius: 2px;
 }
 
 .bar-chart-container {
-  height: 300px;
+  height: clamp(250px, 35vh, 400px);
   padding: 0;
-  margin-top: 1rem;
+  margin-top: clamp(0.5rem, 2vh, 1.5rem);
 }
 
 .chart-legend {
@@ -616,8 +700,27 @@
 }
 
 .donut-chart-wrapper {
-  width: 160px;
-  height: 160px;
+  width: clamp(120px, 20vw, 180px);
+  height: clamp(120px, 20vw, 180px);
+  position: relative;
+}
+
+.donut-chart-wrapper::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  padding: 2px;
+  background: linear-gradient(135deg, rgba(180, 76, 67, 0.1), rgba(180, 76, 67, 0.3));
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: xor;
+  -webkit-mask-composite: xor;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.donut-chart-wrapper:hover::before {
+  opacity: 1;
 }
 
 .legend-section {

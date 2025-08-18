@@ -7,7 +7,7 @@ import SimpleBar from 'simplebar-react'
 import 'simplebar-react/dist/simplebar.min.css'
 import { CBadge, CNavLink, CSidebarNav } from '@coreui/react-pro'
 
-import type { Badge, NavItem } from '../../_nav'
+import type { Badge, NavItem } from '../types/nav.types'
 
 export const AppSidebarNav = ({ items }: { items: NavItem[] }) => {
   const navLink = (

@@ -9,22 +9,7 @@ import {
  
 } from '@coreui/icons';
 import { CNavItem } from '@coreui/react-pro';
-
-export type Badge = {
-  color: string;
-  text: string;
-};
-
-export type NavItem = {
-  badge?: Badge;
-  component: string | ElementType;
-  href?: string;
-  icon?: string | JSX.Element;
-  items?: NavItem[];
-  name: string | JSX.Element;
-  to?: string;
-  roles?: string[]; // Add roles property for role-based navigation
-};
+import { NavItem } from './src/types/nav.types';
 
 const _nav: NavItem[] = [
   {

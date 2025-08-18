@@ -1,0 +1,705 @@
+/* RTL Support Styles */
+
+/* Base RTL Direction */
+[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+}
+
+/* Layout adjustments for RTL */
+.rtl {
+  direction: rtl;
+  text-align: right;
+}
+
+/* Fix root element RTL */
+html[dir="rtl"],
+html.rtl {
+  direction: rtl;
+}
+
+body.rtl {
+  direction: rtl;
+  text-align: right;
+}
+
+/* Fix root layout issues */
+.rtl #root {
+  direction: rtl;
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Fix main container layout for RTL */
+.rtl .container,
+.rtl .container-fluid {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+/* Fix main content area */
+.rtl .main {
+  margin-right: 0;
+  margin-left: auto;
+}
+
+/* Fix content wrapper - removed conflict */
+
+/* Fix page content */
+.rtl .fade {
+  text-align: right;
+}
+
+/* Fix content container width */
+.rtl .container-fluid {
+  width: 100%;
+  max-width: none;
+  margin-right: 0;
+  margin-left: 0;
+  padding-right: 1rem;
+  padding-left: 1rem;
+}
+
+/* Fix main content area padding */
+.rtl .main {
+  padding: 0;
+  width: 100%;
+}
+
+/* Override conflicting wrapper styles */
+.rtl .wrapper {
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+  direction: ltr; /* Keep wrapper LTR for layout, content will be RTL */
+}
+
+/* Fix card layouts */
+.rtl .card {
+  direction: rtl;
+  text-align: right;
+}
+
+.rtl .card-body {
+  text-align: right;
+  direction: rtl;
+}
+
+/* Fix content inside wrapper to be RTL */
+.rtl .wrapper .body {
+  direction: rtl;
+}
+
+.rtl .wrapper .body * {
+  direction: rtl;
+}
+
+/* Fix specific container issues */
+.rtl .users-container,
+.rtl .brands-container {
+  direction: rtl;
+  text-align: right;
+  padding-right: 1rem;
+  padding-left: 1rem;
+}
+
+/* Fix button layouts in RTL */
+.rtl .d-flex.gap-2 {
+  flex-direction: row-reverse;
+}
+
+.rtl .d-flex.justify-content-end {
+  justify-content: flex-start !important;
+}
+
+.rtl .d-flex.justify-content-between {
+  flex-direction: row-reverse;
+}
+
+.rtl .sidebar {
+  right: 0;
+  left: auto;
+}
+
+.rtl .sidebar-nav {
+  padding-right: 0;
+  padding-left: 1rem;
+}
+
+.rtl .sidebar-nav .nav-link {
+  padding-right: 0;
+  padding-left: 1rem;
+}
+
+/* CoreUI Sidebar RTL fixes */
+.rtl .sidebar-nav-link {
+  padding-right: 0.75rem;
+  padding-left: 1rem;
+}
+
+.rtl .nav-icon {
+  margin-right: 0;
+  margin-left: 0.5rem;
+}
+
+/* Fix sidebar positioning for RTL */
+.rtl .sidebar {
+  right: 0 !important;
+  left: auto !important;
+  transform: translateX(0) !important;
+}
+
+.rtl .sidebar.sidebar-fixed {
+  position: fixed;
+  right: 0;
+  left: auto;
+}
+
+/* Header adjustments */
+.rtl .header-nav {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+/* Fix header navigation RTL */
+.rtl .header {
+  direction: ltr; /* Keep header layout LTR for proper positioning */
+}
+
+.rtl .header .container-fluid {
+  direction: ltr; /* Container should be LTR for flex alignment */
+  padding-right: 1rem;
+  padding-left: 1rem;
+}
+
+/* Fix header navigation items positioning */
+.rtl .header .navbar-nav {
+  flex-direction: row;
+  margin-left: auto;
+  margin-right: 0;
+}
+
+/* Ensure header items don't overflow */
+.rtl .header .container-fluid {
+  max-width: 100%;
+  overflow: hidden;
+}
+
+/* Fix language toggle positioning */
+.rtl .language-toggle {
+  order: 1;
+}
+
+/* Fix theme toggle positioning */
+.rtl .header .dropdown {
+  order: 2;
+}
+
+/* Fix user dropdown positioning */
+.rtl .header .header-dropdown {
+  order: 3;
+}
+
+/* Fix header navigation overflow */
+.rtl .header .navbar-nav {
+  white-space: nowrap;
+  overflow: visible;
+}
+
+/* Fix navigation items spacing */
+.rtl .header .nav-item {
+  margin-left: 0.5rem;
+  margin-right: 0;
+}
+
+/* Fix vertical divider in RTL */
+.rtl .header .vr {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+/* CoreUI Header specific RTL fixes */
+.rtl .app-header {
+  direction: ltr; /* Keep header layout LTR for proper positioning */
+  overflow: visible;
+}
+
+.rtl .app-header .header-container {
+  direction: ltr; /* Container should be LTR for flex alignment */
+  padding-right: 1rem;
+  padding-left: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 100%;
+  overflow: visible;
+  flex-wrap: nowrap;
+}
+
+/* Fix header navigation actions */
+.rtl .app-header .header-nav-actions {
+  direction: ltr;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: auto;
+  margin-right: 0;
+  overflow: visible;
+  white-space: nowrap;
+  flex-wrap: nowrap;
+  min-width: 0;
+}
+
+/* Fix navigation items spacing and prevent overflow */
+.rtl .app-header .header-nav-actions .nav-item {
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
+  flex-shrink: 0;
+}
+
+/* Fix language toggle positioning */
+.rtl .app-header .language-toggle {
+  order: 1;
+  flex-shrink: 0;
+}
+
+/* Fix nav dividers */
+.rtl .app-header .nav-divider {
+  order: 2;
+  flex-shrink: 0;
+}
+
+.rtl .app-header .nav-divider:nth-of-type(2) {
+  order: 4;
+}
+
+/* Fix theme toggle positioning */
+.rtl .app-header .theme-toggle {
+  order: 3;
+  flex-shrink: 0;
+}
+
+/* Fix user dropdown positioning */
+.rtl .app-header .header-dropdown {
+  order: 5;
+  flex-shrink: 0;
+}
+
+/* Fix ms-auto class in RTL for header */
+.rtl .app-header .ms-auto {
+  margin-left: auto !important;
+  margin-right: 0 !important;
+}
+
+/* Fix CoreUI header toggle button */
+.rtl .app-header .header-toggler {
+  order: -1;
+  margin-right: 0;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+/* Fix vertical divider in RTL */
+.rtl .app-header .vr {
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
+}
+
+/* Fix header dropdown alignment for RTL */
+.rtl .app-header .dropdown-menu {
+  right: auto;
+  left: 0;
+  direction: rtl;
+}
+
+.rtl .app-header .dropdown-menu .dropdown-item {
+  text-align: right;
+  direction: rtl;
+}
+
+/* Fix theme dropdown */
+.rtl .app-header .theme-toggle .dropdown-menu {
+  direction: rtl;
+  text-align: right;
+}
+
+.rtl .app-header .theme-toggle .dropdown-item {
+  direction: rtl;
+  text-align: right;
+}
+
+/* Fix language dropdown */
+.rtl .app-header .language-toggle .dropdown-menu {
+  direction: rtl;
+  text-align: right;
+}
+
+.rtl .app-header .language-toggle .dropdown-item {
+  direction: rtl;
+  text-align: right;
+}
+
+/* Prevent header content overflow on small screens */
+@media (max-width: 767.98px) {
+  .rtl .app-header .header-nav-actions {
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  
+  .rtl .app-header .header-nav-actions::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .rtl .app-header .nav-divider {
+    display: none;
+  }
+}
+
+/* Fix main content positioning with sidebar */
+.rtl .wrapper {
+  margin-right: var(--cui-sidebar-width, 256px);
+  margin-left: 0;
+}
+
+/* Fix body positioning */
+.rtl .body {
+  padding-right: 0;
+  padding-left: 0;
+  margin-right: 0;
+  margin-left: 0;
+}
+
+/* Fix wrapper layout for RTL */
+.rtl .wrapper.d-flex {
+  margin-right: var(--cui-sidebar-width, 256px);
+  margin-left: 0;
+}
+
+/* Fix responsive sidebar for mobile RTL */
+@media (max-width: 991.98px) {
+  .rtl .wrapper {
+    margin-right: 0;
+    margin-left: 0;
+  }
+  
+  .rtl .sidebar {
+    transform: translateX(100%);
+    right: 0;
+    left: auto;
+  }
+  
+  .rtl .sidebar.show {
+    transform: translateX(0);
+  }
+}
+
+.rtl .ms-auto {
+  margin-right: auto !important;
+  margin-left: 0 !important;
+}
+
+.rtl .me-auto {
+  margin-left: auto !important;
+  margin-right: 0 !important;
+}
+
+.rtl .ms-2 {
+  margin-right: 0.5rem !important;
+  margin-left: 0 !important;
+}
+
+.rtl .me-2 {
+  margin-left: 0.5rem !important;
+  margin-right: 0 !important;
+}
+
+/* Breadcrumb RTL */
+.rtl .breadcrumb-item + .breadcrumb-item::before {
+  content: "\\";
+  transform: rotateY(180deg);
+}
+
+/* Dropdown RTL */
+.rtl .dropdown-menu {
+  right: 0;
+  left: auto;
+}
+
+.rtl .dropdown-toggle::after {
+  margin-right: 0.255em;
+  margin-left: 0;
+}
+
+/* Form elements RTL */
+.rtl .form-control,
+.rtl .form-select {
+  text-align: right;
+}
+
+.rtl .input-group-text {
+  border-right: 0;
+  border-left: var(--cui-border-width) solid var(--cui-border-color);
+}
+
+/* Button groups RTL */
+.rtl .btn-group > .btn:not(:last-child):not(.dropdown-toggle),
+.rtl .btn-group > .btn-group:not(:last-child) > .btn {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-right-radius: var(--cui-border-radius);
+  border-bottom-right-radius: var(--cui-border-radius);
+}
+
+.rtl .btn-group > .btn:not(:first-child),
+.rtl .btn-group > .btn-group:not(:first-child) > .btn {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-top-left-radius: var(--cui-border-radius);
+  border-bottom-left-radius: var(--cui-border-radius);
+  margin-right: -1px;
+  margin-left: 0;
+}
+
+/* Table RTL */
+.rtl .table th,
+.rtl .table td {
+  text-align: right;
+}
+
+.rtl .table-responsive {
+  direction: rtl;
+}
+
+/* Fix table layout issues */
+.rtl .table {
+  margin-bottom: 0;
+}
+
+.rtl .table thead th {
+  border-bottom-width: 2px;
+  text-align: right;
+}
+
+.rtl .table tbody tr td:first-child {
+  padding-right: 1rem;
+}
+
+.rtl .table tbody tr td:last-child {
+  padding-left: 1rem;
+}
+
+/* Modal RTL */
+.rtl .modal-header .btn-close {
+  margin: -0.5rem 0 -0.5rem auto;
+}
+
+/* Card RTL */
+.rtl .card-header {
+  text-align: right;
+}
+
+/* Navigation RTL */
+.rtl .nav-pills .nav-link {
+  text-align: right;
+}
+
+.rtl .nav-tabs .nav-link {
+  text-align: right;
+}
+
+/* Progress RTL */
+.rtl .progress {
+  direction: ltr; /* Keep progress bar direction */
+}
+
+/* Alert RTL */
+.rtl .alert-dismissible .btn-close {
+  left: 0;
+  right: auto;
+}
+
+/* Toast RTL */
+.rtl .toast {
+  text-align: right;
+}
+
+.rtl .toast-header .btn-close {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+/* Pagination RTL */
+.rtl .page-link {
+  text-align: center;
+}
+
+/* Carousel RTL */
+.rtl .carousel-control-prev {
+  right: 0;
+  left: auto;
+}
+
+.rtl .carousel-control-next {
+  left: 0;
+  right: auto;
+}
+
+.rtl .carousel-indicators {
+  direction: ltr; /* Keep indicators in original order */
+}
+
+/* Accordion RTL */
+.rtl .accordion-button {
+  text-align: right;
+}
+
+.rtl .accordion-button::after {
+  margin-right: 0;
+  margin-left: auto;
+}
+
+/* Offcanvas RTL */
+.rtl .offcanvas-start {
+  right: 0;
+  left: auto;
+  transform: translateX(100%);
+}
+
+.rtl .offcanvas-end {
+  left: 0;
+  right: auto;
+  transform: translateX(-100%);
+}
+
+/* List group RTL */
+.rtl .list-group-item {
+  text-align: right;
+}
+
+/* Badge RTL */
+.rtl .badge {
+  text-align: center;
+}
+
+/* Spinner RTL - maintain rotation */
+.rtl .spinner-border,
+.rtl .spinner-grow {
+  direction: ltr;
+}
+
+/* Custom scrollbar for RTL */
+.rtl ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.rtl ::-webkit-scrollbar-track {
+  background: var(--cui-gray-100);
+}
+
+.rtl ::-webkit-scrollbar-thumb {
+  background: var(--cui-gray-400);
+  border-radius: 4px;
+}
+
+.rtl ::-webkit-scrollbar-thumb:hover {
+  background: var(--cui-gray-500);
+}
+
+/* Specific CoreUI components RTL adjustments */
+.rtl .sidebar-nav .nav-group .nav-group-items {
+  padding-right: 0;
+  padding-left: 2rem;
+}
+
+.rtl .sidebar-nav .nav-group-toggle::after {
+  margin-right: 0;
+  margin-left: auto;
+  transform: rotate(-90deg);
+}
+
+.rtl .sidebar-nav .nav-group.show .nav-group-toggle::after {
+  transform: rotate(0);
+}
+
+/* Text direction utilities */
+.rtl .text-start {
+  text-align: right !important;
+}
+
+.rtl .text-end {
+  text-align: left !important;
+}
+
+/* Float utilities RTL */
+.rtl .float-start {
+  float: right !important;
+}
+
+.rtl .float-end {
+  float: left !important;
+}
+
+/* Border utilities RTL */
+.rtl .border-start {
+  border-right: var(--cui-border-width) solid var(--cui-border-color) !important;
+  border-left: 0 !important;
+}
+
+.rtl .border-end {
+  border-left: var(--cui-border-width) solid var(--cui-border-color) !important;
+  border-right: 0 !important;
+}
+
+/* Responsive RTL adjustments */
+@media (max-width: 991.98px) {
+  .rtl .sidebar {
+    transform: translateX(100%);
+  }
+  
+  .rtl .sidebar.show {
+    transform: translateX(0);
+  }
+}
+
+/* Fix white space issues in RTL */
+.rtl .wrapper,
+.rtl .body {
+  width: 100% !important;
+  max-width: none !important;
+}
+
+/* Ensure proper content width */
+.rtl .container,
+.rtl .container-fluid {
+  width: 100% !important;
+  max-width: none !important;
+  padding-right: 1rem !important;
+  padding-left: 1rem !important;
+}
+
+/* Fix header spacing */
+.rtl .header {
+  padding-right: 0;
+  padding-left: 0;
+  width: 100%;
+}
+
+/* Fix content padding */
+.rtl .px-4 {
+  padding-right: 1rem !important;
+  padding-left: 1rem !important;
+}
+
+/* Dark theme RTL adjustments */
+[data-coreui-theme="dark"] .rtl ::-webkit-scrollbar-track {
+  background: var(--cui-gray-800);
+}
+
+[data-coreui-theme="dark"] .rtl ::-webkit-scrollbar-thumb {
+  background: var(--cui-gray-600);
+}
+
+[data-coreui-theme="dark"] .rtl ::-webkit-scrollbar-thumb:hover {
+  background: var(--cui-gray-500);
+}

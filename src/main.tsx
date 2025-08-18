@@ -10,6 +10,7 @@ import App from './App';
 import { Provider } from 'react-redux';
 import store, { Persistor } from './redux';
 import { PersistGate } from 'redux-persist/integration/react';
+import './i18n'; // Initialize i18n
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

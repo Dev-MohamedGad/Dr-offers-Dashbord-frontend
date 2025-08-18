@@ -6,7 +6,7 @@
 
 [data-simplebar="init"] {
   flex: 1;
-  overflow-x: hidden;
-  overflow-y: auto;
+  overflow: visible !important;
 }
+
 
