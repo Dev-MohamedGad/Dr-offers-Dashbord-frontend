@@ -1,6 +1,7 @@
 export const ar = {
   // Navigation
   navigation: {
+    home: 'الرئيسية',
     dashboard: 'لوحة التحكم',
     brands: 'العلامات التجارية',
     offers: 'العروض',

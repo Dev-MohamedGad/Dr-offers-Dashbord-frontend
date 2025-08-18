@@ -1,6 +1,7 @@
 export const en = {
   // Navigation
   navigation: {
+    home: 'Home',
     dashboard: 'Dashboard',
     brands: 'Brands',
     offers: 'Offers',
