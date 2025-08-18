@@ -94,17 +94,7 @@ const AppSidebar = () => {
       {/* Sidebar Footer with Action Buttons */}
       <CSidebarFooter className="border-top custom-sidebar-footer">
         <div className="sidebar-bottom-buttons">
-          <CButton
-            color="light"
-            variant="ghost"
-            className="sidebar-action-btn settings-btn"
-            onClick={handleSettings}
-            title={t('sidebar.settings')}
-          >
-            <CIcon icon={cilSettings} size="lg" />
-            <span className="btn-text">{t('sidebar.settings')}</span>
-          </CButton>
-          
+       
           <CButton
             color="danger"
             variant="ghost"

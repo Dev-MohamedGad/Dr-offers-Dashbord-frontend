@@ -431,7 +431,7 @@ function HomePage() {
       {/* Metrics Row */}
       <CRow className="mb-3 ">
         {/* Views Card */}
-        <CCol xs={12} sm={6} md={2} lg={2} className="mb-3 g-2">
+        <CCol xs={12} sm={6} md={2} lg={3} className="mb-3 g-2">
           <CCard className="metric-card  h-100">
             <CCardBody>
               <div className="metric-content">
@@ -447,7 +447,7 @@ function HomePage() {
         </CCol>
 
         {/* Visits Card */}
-        <CCol xs={12} sm={8} md={2} lg={2}>
+        <CCol xs={12} sm={8} md={2} lg={3}>
           <CCard className="metric-card h-100">
             <CCardBody>
               <div className="metric-content">
@@ -498,7 +498,7 @@ function HomePage() {
       {/* Content Row */}
       <CRow className=" mb-3">
         {/* Chart Section */}
-        <CCol xs={12} xl={6}>
+        <CCol xs={12} xl={7}>
           <CCard >
               <div className="chart-container">
                 <Line data={chartData} options={chartOptions} plugins={[dottedLinePlugin]} />
@@ -507,7 +507,7 @@ function HomePage() {
         </CCol>
 
         {/* Brands List */}
-        <CCol xs={12} xl={4}>
+        <CCol xs={12} xl={5}>
           <CCard className="brands-list-card h-100">
             <div className="brands-header">
               <h6 className="brands-title">{t('dashboard.brands')}</h6>
