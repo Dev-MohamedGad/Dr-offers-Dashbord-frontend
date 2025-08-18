@@ -429,10 +429,10 @@ function HomePage() {
     <CContainer fluid className="dashboard-container compact-dashboard">
      
       {/* Metrics Row */}
-      <CRow className="mb-3 g-2">
+      <CRow className="mb-3 ">
         {/* Views Card */}
-        <CCol xs={12} sm={6} md={6} lg={3} className="mb-3">
-          <CCard className="metric-card h-100">
+        <CCol xs={12} sm={6} md={2} lg={2} className="mb-3 g-2">
+          <CCard className="metric-card  h-100">
             <CCardBody>
               <div className="metric-content">
                 <div className="metric-label">{t('dashboard.views')}</div>
@@ -447,7 +447,7 @@ function HomePage() {
         </CCol>
 
         {/* Visits Card */}
-        <CCol xs={12} sm={6} md={6} lg={3}>
+        <CCol xs={12} sm={8} md={2} lg={2}>
           <CCard className="metric-card h-100">
             <CCardBody>
               <div className="metric-content">
@@ -463,8 +463,8 @@ function HomePage() {
         </CCol>
 
         {/* Active Brands Card */}
-        <CCol xs={12} sm={6} md={6} lg={3}>
-          <CCard className="metric-card h-100">
+        <CCol xs={12} sm={8} md={2} lg={3}>
+          <CCard className="metric-card h-100 ">
             <CCardBody>
               <div className="metric-content">
                 <div className="metric-label">{t('dashboard.activeBrands')}</div>
@@ -479,7 +479,7 @@ function HomePage() {
         </CCol>
 
         {/* Active Users Card */}
-        <CCol xs={12} sm={6} md={6} lg={3}>
+        <CCol xs={12} sm={8} md={2} lg={3}>
           <CCard className="metric-card h-100">
             <CCardBody>
               <div className="metric-content">
@@ -496,9 +496,9 @@ function HomePage() {
       </CRow>
 
       {/* Content Row */}
-      <CRow className="g-2 mb-3">
+      <CRow className=" mb-3">
         {/* Chart Section */}
-        <CCol xs={12} xl={8}>
+        <CCol xs={12} xl={6}>
           <CCard >
               <div className="chart-container">
                 <Line data={chartData} options={chartOptions} plugins={[dottedLinePlugin]} />
@@ -554,7 +554,7 @@ function HomePage() {
       {/* Additional Analytics Row */}
       <CRow className="g-2">
         {/* Top 5 Brands */}
-        <CCol xs={12} lg={7}>
+        <CCol xs={12} lg={5}>
           <CCard className="chart-card h-100">
             <CCardBody>
               <div className="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center mb-3">
@@ -574,7 +574,7 @@ function HomePage() {
         </CCol>
 
         {/* Subscription Plans */}
-        <CCol xs={12} lg={5}>
+        <CCol xs={12} lg={7}>
           <CCard className="chart-card h-100">
             <CCardBody>
               <h6 className="chart-title mb-4">{t('dashboard.subscriptionPlans')}</h6>
